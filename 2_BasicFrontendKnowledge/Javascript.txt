@@ -1,4 +1,4 @@
-//Tutorial,forms,objects,functions,classes,async,html dom, browser bom, ajax, json, web apis, js vs jquery,
+//Tutorial only Basics
 ++JavaScript:
 The JavaScript syntax defines two types of values: Fixed values and Variable values
 Fixed values are called Literals. Variable values are called Variables.
@@ -59,6 +59,51 @@ var x = new String(); // Very bad approach
 JavaScript Events:
 HTML events are "things" that happen to HTML elements.
 When JavaScript is used in HTML pages, JavaScript can "react" on these events.
+It can be something the browser does, or something a user does.
+Examples of HTML events:
+An HTML web page has finished loading
+An HTML input field was changed
+An HTML button was clicked
+Event handling attributes: <element event="some JavaScript"> or <element event='some JavaScript'>
+
+In the following example, an onclick attribute (with code), is added to a <button> element:
+<button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button>
+This one is better: <button onclick="displayDate()">The time is?</button>
+
+Common HTML Events:
+onchange	An HTML element has been changed
+onclick	The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload	The browser has finished loading the page
+
+What can JavaScript do?
+Do something every time a page loads
+Do something when the page is closed
+Action that should be performed when a user clicks a button
+Content that should be verified when a user inputs data
+HTML event attributes can execute JavaScript code directly
+HTML event attributes can call JavaScript functions
+You can assign your own event handler functions to HTML elements
+You can prevent events from being sent or being handled
+And more ...
+
+Strings:
+var x = "John Doe";
+For using quotes in the string:
+\'	'	Single quote
+\"	"	Double quote
+\\	\	Backslash
+Other escape sequences:
+\b	Backspace
+\f	Form Feed
+\n	New Line
+\r	Carriage Return
+\t	Horizontal Tabulator
+\v	Vertical Tabulator
+
+
 
 
 
