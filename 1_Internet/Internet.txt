@@ -1,6 +1,71 @@
-How does Internet work?
-What is http?
-Browsers and how they work?
-Dns and how it Works?
-What is domain name?
-What is hosting?
+++How does Internet work?
+The internet is a worldwide computer network that transmits a variety of data and media across interconnected devices.
+It works by using a packet routing network that follows Internet Protocol (IP) and Transport Control Protocol (TCP).
+TCP and IP work together to ensure that data transmission across the internet is consistent and reliable, no matter what.
+When data is transferred over the internet, it’s delivered in messages and packets.
+Data sent over the internet is called a message, but before messages get sent, they’re broken up into tinier parts called packets.
+These messages and packets travel from one source to the next using Internet Protocol (IP) and Transport Control Protocol (TCP) and sometimes with UDP.
+IP is a system of rules that govern how information is sent from one computer to another computer over an internet connection.
+Using a numerical address (IP Address) the IP system receives further instructions on how the data should be transferred.
+The Transport Control Protocol (TCP) works with IP to ensure transfer of data is dependable and reliable.
+This helps to make sure that no packets are lost, packets are reassembled in proper sequence, and there’s no delay negatively affecting the data quality.
+
+++What is HTTP?
+HTTP is a protocol which allows the fetching of resources, such as HTML documents.
+Designed in the early 1990s, HTTP is an extensible protocol which has evolved over time.
+It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser.
+A complete document is reconstructed from the different sub-documents fetched, for instance text, layout description, images, videos, scripts, and more.
+Clients and servers communicate by exchanging individual messages (as opposed to a stream of data).
+The messages sent by the client, usually a "Web browser", are called requests and the messages sent by the server as an answer are called responses.
+It is an application layer protocol that is sent over TCP, or over a TLS-encrypted TCP connection, though any reliable transport protocol could theoretically be used.
+Due to its extensibility, it is used to not only fetch hypertext documents, but also images and videos or to post content to servers, like with HTML form results.
+HTTP can also be used to fetch parts of documents to update Web pages on demand.
+
+++Browsers and how they work?
+A browser is a software application used to locate, retrieve and display content on the World Wide Web, including Web pages, images, video and other files.
+As a client/server model, the browser is the client run on a computer that contacts the Web server and requests information.
+The Web server sends the information back to the Web browser which displays the results on the computer or other Internet-enabled device that supports a browser.
+Main components of the browser:
+1_User Interface: The interface on browser which user interacts with the browser(back,next,home,refreshp,stop buttons).
+2_ Browser Engine: A bridge between user interface and rendering engine. It queries and manipulates the rendering engine according to the inputs from interface.
+3_ Rendering Engine: Renders the requested web page on the browser screen. Different browsers use different rendering engines.
+4_ Networking: Retrieves the URLs using HTTP and FTP. Handles all aspects of Internet communication and security.(It may implement a cache of retrieved documents)
+5_ JavaScript Interpreter: Interprets and executes the javascript code embedded in the website. If script is external then first the resource is fetched from the network.
+Paser keeps on hold until the script is executed.
+6_ UI Backend: Used for drawing basic widgets like combo boxes and windows. THis backend exposes a generic interface that is not platform specific.
+7_ Data Persistence/Storage: Browser support storage mechanisms on the local drive. It manages user data such as cache, cookies,bookmarks and preferences.
+
+++What is Domain Name?
+A domain name is an identification string that defines a realm of administrative autonomy, authority or control within the Internet.
+Domain names are used in various networking contexts and for application-specific naming and addressing purposes.
+It is used because people can't remember Ip addresses but can remember strings.
+
+++DNS and how it works?
+The Domain Name System (DNS) is a central part of the internet, providing a way to match names (a website you’re seeking) to numbers (the address for the website).
+DNS syncs up domain names with IP addresses enabling humans to use memorable domain names while computers on the internet can use IP addresses.
+DNS working steps:
+1_ Query: When you type google.com into browser,your browser sends a query over the internet to find the website. 
+A query is a question seeking to match the domain name with its corresponding IP address.
+The first server your query interacts with is the recursive resolver which can be operated by your ISP(internet service provider).
+2_ Root Servers: The first type of DNS server the recursive resolver talks to is called Root Server.
+The Root Servers are running all over the world(13 sets of 300+ root servers) each knows DNS info about Top Level Domains such as ".com" .
+To begin answering your query the recursive resolver asks a root server for DNS info about ".com".
+3_ TLD Name Server: Returns the address informations of DNS server to recursive resolver.
+4 _ The Domain's Name Server: DNS server returns the IP address of the website to recursive resolver.
+5 _ Website appears: Browser send request to the website to retrieve website's content using IP address it just learned.
+
+++What is hosting?
+Web hosting is the process of renting or buying space to house a website on the World Wide Web.
+When a hosting provider allocates space on a web server for a website to store its files, they are hosting a website.
+Web hosting makes the files that comprise a website (code, images, etc.) available for viewing online. Every website you’ve ever visited is hosted on a server.
+The amount of space allocated on a server to a website depends on the type of hosting.
+The main types of hosting are shared, dedicated, VPS and reseller.
+They are differentiated by the kind of technology used for the server, the level of management provided and the additional services on offer.
+
+References: 
+store.hp.com,how does the Internet work
+developer.mozilla.org, An overview of HTTP
+monica1109,medium.com,How does web browsers work?
+cloudflare.com,What is DNS?
+verisign.com. How DNS Works
+namecheap.com,What is web hosting?
