@@ -168,28 +168,121 @@ Examples:
 <h1 style="font-size:10vw">Hello World</h1>
 !Viewport is the browser window size. 1vw = 1% of viewport width
 
+Computer code:
+HTML contains several elements for defining user input and computer code: <code></code>
+Keyboard input: <kbd></kbd>
+Sample output: <samp></samp>
+Variables: <var></var>
 
+XHTML:
+XHTML stands for EXtensible HyperText Markup Language
+XHTML is a stricter, more XML-based version of HTML
+XHTML is HTML defined as an XML application
+XHTML is supported by all major browsers
 
+XHTML was developed to make HTML more extensible and flexible to work with other data formats (such as XML).
+In addition, browsers ignore errors in HTML pages, and try to display the website even if it has some errors in the markup. So XHTML comes with a much stricter error handling.
 
+All Form Elements:
+The <form> element is used to create an HTML form for user input.
+<input type="text">	Displays a single-line text input field
+<input type="radio">	Displays a radio button (for selecting one of many choices)
+<input type="checkbox">	Displays a checkbox (for selecting zero or more of many choices)
+<input type="submit">	Displays a submit button (for submitting the form)
+<input type="button">	Displays a clickable button
+<form>	Defines an HTML form for user input
+<input>	Defines an input control
+<textarea>	Defines a multiline input control (text area)
+<label>	Defines a label for an <input> element
+<fieldset>	Groups related elements in a form
+<legend>	Defines a caption for a <fieldset> element
+<select>	Defines a drop-down list
+<optgroup>	Defines a group of related options in a drop-down list
+<option>	Defines an option in a drop-down list
+<button>	Defines a clickable button
+<datalist>	Specifies a list of pre-defined options for input controls
+<output>	Defines the result of a calculation
 
+All Form Attribute Elements:
+accept-charset	Specifies the character encodings used for form submission
+action	        Specifies where to send the form-data when a form is submitted
+autocomplete	Specifies whether a form should have autocomplete on or off
+enctype	        Specifies how the form-data should be encoded when submitting it to the server (only for method="post")
+method	        Specifies the HTTP method to use when sending form-data
+name	        Specifies the name of the form
+novalidate	Specifies that the form should not be validated when submitted
+rel	        Specifies the relationship between a linked resource and the current document
+target	        Specifies where to display the response that is received after submitting the form
 
+All Input Types:
+<input type="button">
+<input type="checkbox">
+<input type="color">
+<input type="date">
+<input type="datetime-local">
+<input type="email">
+<input type="file">
+<input type="hidden">
+<input type="image">
+<input type="month">
+<input type="number">
+<input type="password">
+<input type="radio">
+<input type="range">
+<input type="reset">
+<input type="search">
+<input type="submit">
+<input type="tel">
+<input type="text">
+<input type="time">
+<input type="url">
+<input type="week">
 
+All input restrictions:
+checked	        Specifies that an input field should be pre-selected when the page loads (for type="checkbox" or type="radio")
+disabled	Specifies that an input field should be disabled
+max	        Specifies the maximum value for an input field
+maxlength	Specifies the maximum number of character for an input field
+min	        Specifies the minimum value for an input field
+pattern	        Specifies a regular expression to check the input value against
+readonly	Specifies that an input field is read only (cannot be changed)
+required	Specifies that an input field is required (must be filled out)
+size	        Specifies the width (in characters) of an input field
+step	        Specifies the legal number intervals for an input field
+value	        Specifies the default value for an input field
 
+Canvas and SVG:
+The HTML <canvas> element is used to draw graphics on a web page.
+The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+<canvas id="myCanvas" width="200" height="100"></canvas>
+Note: Always specify an id attribute (to be referred to in a script), and a width and height attribute to define the size of the canvas. To add a border, use the style attribute.
+SVG defines vector-based graphics in XML format.
+SVG stands for Scalable Vector Graphics
+SVG is used to define graphics for the Web
+SVG is recomended.
 
+Canvas
+Resolution dependent
+No support for event handlers
+Poor text rendering capabilities
+You can save the resulting image as .png or .jpg
+Well suited for graphic-intensive games
+SVG
+Resolution independent
+Support for event handlers
+Best suited for applications with large rendering areas (Google Maps)
+Slow rendering if complex (anything that uses the DOM a lot will be slow)
+Not suited for game applications
 
+Multimedia: Multimedia on the web is sound, music, videos, movies, and animations.
+HTML supported video formats : Ogg,WebM, MPEG-4 or MP4
+HTML supported audio formats: Ogg, Wav,mp3
 
-
-
-
-
-
-
-
-
-
-
-
-
+Multimedia tags:
+<video> 	Defines a video or movie
+<source>	Defines multiple media resources for media elements, such as <video> and <audio>
+<track> 	Defines text tracks in media players
+<audio>	        Defines sound content
 
 
 
