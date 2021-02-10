@@ -1,2 +1,50 @@
+++Css:
+Css is for designing html files.
+
+Comment:
+/* This is a single-line comment */
+Color:
+You can use names or more specifically html color codes. These color codes are available on the internet so you don't have to remember them.
+
+Syntax example:
+body {
+ background-color: lightblue;
+}
+
+h1 {
+ color: white;
+ text-align: center;
+} 
+
+p {
+ font-family: verdana;
+ font-size: 20px;
+} 
+Position:
+Fixed (unmovable), sticky (changes it location for your screen, you can think it as it sticks on your screen), absolute (you can move it anywhere on the screen), relative (can overlap with).
+Do not use absolute all the time.
+
+Margin:
+Puts spaces between elements.
+margin : 0; 
+
+
+Height and Width: 
+You can use px (pixel), em (for main elements font size), ex (for font's minimum size), %( percentage for the page).
+Today mobile devices are so popular so we should make our websites “responsive”.  .
+We also can design for different screen types for responsiveness.
+Example:
+@media screen and (max-width: 540px) { <!-- For mobile--> 
+    .view { width: 400px;}}
+
+@media screen and (min-width: 540px) and (max-width: 780px) { <!-- For tablets--> 
+    .view {width: 600px;}}
+
+Padding:
+Changes the place of the text in the element.
+Example :
+.top-banner{ background-color: #AED6F1; position:fixed; top:0px; left:0px; width:100%; padding-top:0.3%; padding-left:40%; height: 50px;}
+Note: In this document css codes are write side by side for place concerns. When you are writing please write every code element in a single line. Readability is so important.
+
 Reference:
 w3school.com,css
