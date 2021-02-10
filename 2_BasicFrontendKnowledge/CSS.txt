@@ -1,3 +1,4 @@
+Since CSS is more about design, I haven't studied as much as html.
 ++Css:
 Css is for designing html files.
 
