@@ -1,5 +1,5 @@
+//Tutorial,forms,objects,functions,classes,async,html dom, browser bom, ajax, json, web apis, js vs jquery,
 ++JavaScript:
-
 The JavaScript syntax defines two types of values: Fixed values and Variable values
 Fixed values are called Literals. Variable values are called Variables.
 
@@ -30,6 +30,36 @@ Equal Type:
 typeof	        Returns the type of a variable
 instanceof	Returns true if an object is an instance of an object type
 
+Operator Precedence:
+,(comma)> yield(pause function)>Assignment operators> ?:(Condition)> Bitwise operations>!==>!=>===>==>instanceof(instance object)>in(property object)>greater and less operations> bitwise shifts>
+arithmetic operations(+-*/)>exponention(**)>typeof(type)>!(logical not)>prefixes>postfixes>new>()function call>member[]>.(member)>()(expression group)
+
+Null and Undefined: Are equal in value but different in type
+"typeof" operator can return only string,number,boolean and "undefined".
+
+
+Functions: !No need to indicate the return type 
+function myFunction(p1, p2) {
+  return p1 * p2;   // The function returns the product of p1 and p2
+}
+
+Objects:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+person.fullName();
+Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
+var x = new String(); // Very bad approach
+
+JavaScript Events:
+HTML events are "things" that happen to HTML elements.
+When JavaScript is used in HTML pages, JavaScript can "react" on these events.
+
 
 
 
@@ -37,4 +67,4 @@ instanceof	Returns true if an object is an instance of an object type
 
 
 Reference:
-w3school.com,javascript
+w3school.com,javaScript
