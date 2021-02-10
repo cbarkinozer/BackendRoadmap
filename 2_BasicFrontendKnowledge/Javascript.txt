@@ -1,2 +1,40 @@
+++JavaScript:
+
+The JavaScript syntax defines two types of values: Fixed values and Variable values
+Fixed values are called Literals. Variable values are called Variables.
+
+Comment: Code after double slashes // or between /* and */ is treated as a comment.
+
+Variables:
+JavaScript ES6(after 2015) allows the use of the "const" keyword to define a variable that cannot be reassigned.
+The "let" keyword to define a variable with restricted scope.
+
+All JavaScript variables must be identified with unique names called identifiers.
+Names are case sensitive, reserved words cannot be used.
+JavaScript identifies are case-sensitive.
+Note: It's a good programming practice to declare all variables at the beginning of a script.
+
+Constant Arrays:
+const cars = ["Saab", "Volvo", "BMW"];// You can create a constant array
+cars[0] = "Toyota";                   // You can change an element
+cars.push("Audi");                    // You can add an element
+cars = ["Toyota", "Volvo", "Audi"];   // ERROR
+
+
+Equal Type:
+===	equal value and equal type
+!==     not equal value or not equal type
+==      equal to
+!=      not equal to
+
+typeof	        Returns the type of a variable
+instanceof	Returns true if an object is an instance of an object type
+
+
+
+
+
+
+
 Reference:
 w3school.com,javascript
