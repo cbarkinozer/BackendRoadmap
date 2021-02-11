@@ -1,5 +1,81 @@
-+Terminal Usage
++Terminal Usage:
+Using a terminal allows us to send simple text commands to our computer to do things like navigate through a directory or copy a file,
+and form the basis for many more complex automations and programming skills.
+Windows: Although windows comes with ‘cmd’ you will need to download the tool ‘PowerShell’ in order to run any of the commands in this tutorial.
+Linux: Most Linux distributions supply several, such as: gnome-terminal, konsole, xterm, rxvt, kvt, nxterm, and eterm.
+No need to download anything, just read the help documentation for your distribution to see which one is included.
+1_Change Directory
+Command: cd
+Changes the directory of the command line path
+Example: cd "path/to/directory/"
+
+2_Listing Directory
+Command: ls
+Lists the contents of a directory
+ls "path/to/directory/"
+
+3_Open Files:
+Command: open
+Opens a file
+open "filename"
+
+4_Copy a file to another directory
+Command: cp
+cp "filename" "newfilename"
+
+
+5_Move a file
+Command: mv
+mv "filename" "path/to/new/file/location"
+
+6_Renaming a file
+Command: mv
+mv "path/to/filename" "path/to/newfilename"
+
+7_Create a directory
+Command:mkdir
+mkdir "path/to/new/directory"
+
+8_Remove an empty directory
+Command: rmdir
+rmdir "path/to/directory"
+
+9_Remove nested directories
+Command: rm -R
+rm -R "/path/to/root/directory"
+
+
+10_Execute commands with superuser privileges
+Command: sudo
+sudo "command"
+
+11_List actively running computer processes
+Command:top
+top
+
+12_Quit sub-screen and return to Terminal
+Command: q
+After executing a command, such as "top" to view active processes, press "q" to exit
+
+13_Clear the terminal screen of all previous commands
+Command: clear
+clear
+
+14_Get help for a command
+Command:help
+help "command"
+
+15_Get one-line description for a command
+Command:whatis
+whatis "command"
+
+
+16_Show manual page for a command
+Command:man
+man "command"
+
 +How OSs work in general?
+
 +Porcess Management
 +Threads and Concurrency
 +Basic Terminal Commands(grep,awk,sed,lsof,curl,wget,tail,head,less,find,ssh,kill)
@@ -98,4 +174,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 References:
+University of Washington, What is Terminal
+Tech Republic,16 Terminal commands every user should know
