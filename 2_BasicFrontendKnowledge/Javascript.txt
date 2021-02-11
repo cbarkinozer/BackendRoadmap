@@ -271,96 +271,156 @@ And 2 data types that cannot contain values:
 null
 undefined
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Regular Expressions:
+A regular expression is a sequence of characters that forms a search pattern.
+The search pattern can be used for text search and text replace operations.
+Regular expressions can be used to perform all types of text search and text replace operations.
+var patt = /w3schools/i;
+/w3schools/i  is a regular expression.
+w3schools  is a pattern (to be used in a search).
+i  is a modifier (modifies the search to be case-insensitive).
+
+Errors:
+The try statement lets you test a block of code for errors.
+The catch statement lets you handle the error.
+The throw statement lets you create custom errors.
+The finally statement lets you execute code, after try and catch, regardless of the result.
+
+RangeError	A number "out of range" has occurred : number is out of range
+ReferenceError	An illegal reference has occurred : A variable has not been declared
+SyntaxError	A syntax error has occurred : syntax typo
+TypeError	A type error has occurred :  outside the range of expected types
+URIError	An error in encodeURI() has occurred : illegal characters in a URI function
+
+!Newer versions of JavaScript do not throw EvalError. Use SyntaxError instead.
+
+Scope:
+In JavaScript there are two types of scope: Local scope and Global scope
+JavaScript has function scope: Each function creates a new scope.
+Scope determines the accessibility (visibility) of these variables.
+Variables defined inside a function are not accessible (visible) from outside the function.
+Variables declared within a JavaScript function, become LOCAL to the function.
+Local variables have Function scope: They can only be accessed from within the function.
+A variable declared outside a function, becomes GLOBAL.
+A global variable has global scope: All scripts and functions on a web page can access it.
+Note: In js objects and functions are also variables.
+Scope determines the accessibility of variables, objects, and functions from different parts of the code.
+Automatically Global: If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+! In strict mode undeclared variables are not automatically global.
+Strict mode makes it easier to write "secure" JavaScript.
+Strict mode changes previously accepted "bad syntax" into real errors.
+To declare strict mode: write "use strict"; at the beginning of the code.
+
+In strict mode these are not allowed:
+Using a variable or object, without declaring
+Deleting a variable or object 
+Deleting a function
+Duplicating a parameter name
+Octal numeric literalsOctal escape characters
+Writing a read-only and get-only property
+Deleting an undeletable property
+Usig word eval and arguments as variable
+with statement
+eval() is not allowed to create variables in the scope
+this keyword
+
+
+Variables defined with let and const are hoisted to the top of the block, but not initialized.
+Meaning: The block of code is aware of the variable, but it cannot be used until it has been declared.
+!Using a let variable before it is declared will result in a ReferenceError.
+carName = "Volvo";
+let carName; //error
+const carName; //error
+
+!!Declare your variables at the top
+Hoisting is (to many developers) an unknown or overlooked behavior of JavaScript.
+If a developer doesn't understand hoisting, programs may contain bugs (errors).
+To avoid bugs, always declare all variables at the beginning of every scope.
+Since this is how JavaScript interprets the code, it is always a good rule.
+
+"this" keyword:
+Refers to the object it belongs to.
+
+In a method, this refers to the owner object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), and apply() can refer this to any object.
+
+Arrow Functions:
+Arrow functions were introduced in ES6.
+Arrow functions allow us to write shorter function syntax
+Note: This works only if the function has only one statement.
+Before:
+hello = function() { return "Hello World!";}
+After:
+hello = () => { return "Hello World!";}
+
+Class:
+//most of things are same
+A JavaScript class is not an object.
+It is a template for JavaScript objects.
+
+JSON:
+JSON is a format for storing and transporting data.
+JSON is often used when data is sent from a server to a web page.
+JSON stands for JavaScript Object Notation
+JSON is a lightweight data interchange format
+JSON is language independent *
+JSON is "self-describing" and easy to understand
+
+3 employee records(objects) example:
+{
+"employees":[
+  {"firstName":"John", "lastName":"Doe"},
+  {"firstName":"Anna", "lastName":"Smith"},
+  {"firstName":"Peter", "lastName":"Jones"}
+]
+}
+
+JSON Syntax Rules:
+Data is in name/value pairs
+Data is separated by commas
+Curly braces hold objects
+Square brackets hold arrays
+
+
+JS Conventions:
+Spaces Around Operators
+camelCase for identifier names (variables and functions).
+note: js programmers prefer camelCase
+
+JS Best Practices:
+Avoid global variables, avoid new, avoid ==(use ===), avoid eval()
+Avoid global variables
+Declarations on top
+Never use "new" for fundamental data types(number,string,boolean obj)
+
+Use {} instead of new Object()
+Use "" instead of new String()
+Use 0 instead of new Number()
+Use false instead of new Boolean()
+Use [] instead of new Array()
+Use /()/ instead of new RegExp()
+Use function (){} instead of new Function()
+
+Beware of automatic type conversions
+End your switches with defaults
+Never break a return statement
+JSON does not allow trailing commas.
+Undefined is Not Null
+JavaScript objects, variables, properties, and methods can be undefined.
+In addition, empty JavaScript objects can have the value null.
+This can make it a little bit difficult to test if an object is empty.
+You can test if an object exists by testing if the type is undefined.
+
+Performance:
+Access the length outside the for loop.
+Reduce DOM Size
+Avoid Unnecessary Variables
+Delay JavaScript Loading
+Avoid Using with
 
 
 Reference:
