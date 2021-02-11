@@ -1,0 +1,2 @@
+//I am interested in advanced concepts of java but while I just learned JavaScript, I decided to study advanced JavasScript(also its recommended by the roadmap).
+//Study JS forms,objects,functions,classes,async,html dom, browser bom, ajax, json, web apis, js vs jquery

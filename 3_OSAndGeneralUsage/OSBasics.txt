@@ -1,0 +1,101 @@
++Terminal Usage
++How OSs work in general?
++Porcess Management
++Threads and Concurrency
++Basic Terminal Commands(grep,awk,sed,lsof,curl,wget,tail,head,less,find,ssh,kill)
++Memory Managment
++Interprocess Communication
++I/O Management
++POSIX Basics(stdin,stdout,stderr,pipes)
++Basic Networking Concepts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+References:
