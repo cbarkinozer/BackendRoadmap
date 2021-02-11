@@ -173,6 +173,170 @@ The pop() method removes the last element from an array.
 The push() method adds a new element to an array (at the end).
 The shift() method removes the first array element and "shifts" all other elements to a lower index(also shifted one is assignable):var x = fruits.shift();
 The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements(returns the new array length).
+Since JavaScript arrays are objects, elements can be deleted by using the JavaScript operator delete but leaves undefined holes in array.
+!Use pop or shift instead of delete.
+The splice(position,how many elements,elements) method can be used to add new items to an array: fruits.splice(2, 0, "Lemon", "Kiwi");
+The concat() method creates a new array by merging (concatenating) existing arrays: var myChildren = myGirls.concat(myBoys); 
+!The concat() method does not change the existing arrays. It always returns a new array.
+The sort() method sorts an array alphabetically: fruits.sort();  
+The reverse() method reverses the elements in an array: fruits.reverse(); 
+!Fisher Yates method is used for random order sorting an array.
+You can use Math.max.apply to find the highest number in an array.
+The forEach(value,index,array) method calls a function (a callback function) once for each array element.
+Array.map(value,index,array):
+Creates new array by performing a function on each array element.
+Does not execute the function for array elements without values.
+!Does not change the original array
+The filter(value,index,array) method creates a new array with array elements that passes a test.
+
+Math Object:
+Math.PI;// returns 3.141592653589793
+Math.round(4.7);// returns 5
+Math.pow(8, 2); // returns 64
+Math.sqrt(64);// returns 8
+Math.abs(-4.7);// returns 4.7
+Math.ceil(4.4); // returns 5
+Math.floor(4.7); // returns 4
+Math.sin(90 * Math.PI / 180); // returns 1 (the sine of 90 degrees)
+Math.min(0, 150, 30, 20, -8, -200); // returns -200
+Math.random(); // returns a random number between zero and one
+
+All object methods:
+abs(x)	      		Returns the absolute value of x
+acos(x)			Returns the arccosine of x, in radians
+acosh(x)		Returns the hyperbolic arccosine of x
+asin(x)			Returns the arcsine of x, in radians
+asinh(x)		Returns the hyperbolic arcsine of x
+atan(x)			Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+atan2(y, x)		Returns the arctangent of the quotient of its arguments
+atanh(x)		Returns the hyperbolic arctangent of x
+cbrt(x)			Returns the cubic root of x
+ceil(x)			Returns x, rounded upwards to the nearest integer
+cos(x)			Returns the cosine of x (x is in radians)
+cosh(x)			Returns the hyperbolic cosine of x
+exp(x)			Returns the value of Ex
+floor(x)		Returns x, rounded downwards to the nearest integer
+log(x)			Returns the natural logarithm (base E) of x
+max(x, y, z, ..., n)	Returns the number with the highest value
+min(x, y, z, ..., n)	Returns the number with the lowest value
+pow(x, y)		Returns the value of x to the power of y
+random()		Returns a random number between 0 and 1
+round(x)		Rounds x to the nearest integer
+sin(x)			Returns the sine of x (x is in radians)
+sinh(x)			Returns the hyperbolic sine of x
+sqrt(x)			Returns the square root of x
+tan(x)			Returns the tangent of an angle
+tanh(x)			Returns the hyperbolic tangent of a number
+trunc(x)		Returns the integer part of a number (x)
+
+!Comparing different types always gives false: 2<"john" is false.
+//I am skipping if else switch while do/while statements because they are exactly same with c language's.
+
+Different kind of for loops:
+for - 	   loops through a block of code a number of times
+for/in -   loops through the properties of an object: for (x in person) {text += person[x];}
+for/of -   loops through the values of an iterable object:for (variable of iterable) {}
+It lets you loop over iterable data structures such as Arrays, Strings, Maps, NodeLists, and more
+The JavaScript for/in statement can also loop over the properties of an Array: for (variable in array) {}
+!Do not use for in over an Array if the index order is important.
+The break statement "jumps out" of a loop.
+The continue statement "jumps over" one iteration in the loop.
+
+Labels:
+To label JavaScript statements you precede the statements with a label name and a colon:
+label:
+statements
+break labelname;
+continue labelname;
+The break statement, without a label reference, can only be used to jump out of a loop or a switch.
+With a label reference, the break statement can be used to jump out of any code block:
+
+Data types:
+In JavaScript there are 5 different data types that can contain values:
+string
+number
+boolean
+object
+function
+
+There are 6 types of objects:
+Object
+Date
+Array
+String
+Number
+Boolean
+
+And 2 data types that cannot contain values:
+null
+undefined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
