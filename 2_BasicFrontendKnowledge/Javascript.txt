@@ -103,6 +103,94 @@ Other escape sequences:
 \t	Horizontal Tabulator
 \v	Vertical Tabulator
 
+! comparing different objects with === always fail because they are different objects
+
+The "length" property returns the length of a string: var sln = txt.length;
+The "indexOf()" method returns the index of (the position of) the first occurrence of a specified text in a string: var pos = str.indexOf("locate");
+Both indexOf(), and lastIndexOf() return -1 if the text is not found
+Both methods accept a second parameter as the starting position for the search: var pos = str.indexOf("locate", 15);
+The lastIndexOf() methods searches backwards (from the end to the beginning):var pos = str.lastIndexOf("locate", 15);
+The search() method searches a string for a specified value and returns the position of the match: var pos = str.search("locate");
+The difference of "indexof()" and "search()" :
+The search() method cannot take a second start position argument.
+The indexOf() method cannot take powerful search values (regular expressions).
+slice() extracts a part of a string and returns the extracted part in a new string:var res = str.slice(7, 13);
+substring() is similar to slice() but cannot accept negative indexes:var res = str.substring(7, 13);
+The replace() method replaces a specified value with another value in a string: var n = str.replace("Microsoft", "W3Schools");
+A string is converted to upper case with toUpperCase(): var text2 = text1.toUpperCase();
+A string is converted to lower case with toLowerCase(): var text2 = text1.toLowerCase();
+concat() joins two or more strings: var text3 = text1.concat(" ", text2);
+The trim() method removes whitespace from both sides of a string: alert(str.trim());
+ECMAScript 2017 added two String methods: padStart and padEnd to support padding at the beginning and at the end of a string:
+let str = "5"; str = str.padStart(4,0); // result is 0005
+The charAt() method returns the character at a specified index (position) in a string: str.charAt(0); 
+The charCodeAt() method returns the unicode of the character at a specified index in a string: str.charCodeAt(0);  
+
+Numbers:
+JavaScript has only one type of number. Numbers can be written with or without decimals.
+JavaScript numbers are always stored as double precision floating point numbers.
+var x = 3.14; or var y = 3; or var x = 123e5;  or var y = 123e-5;  
+Integers (numbers without a period or exponent notation) are accurate up to 15 digits: var y = 9999999999999999;
+The maximum number of decimals is 17, but floating point arithmetic is not always 100% accurate(because of rounding): var x = 0.2 + 0.1;
+It helps to multiply and divide: var x = (0.2 * 10 + 0.1 * 10) / 10; 
+JavaScript will try to convert strings to numbers in all numeric operations:var x = "100"; var y = "10"; var z = x / y;//z==10
+NaN is a JavaScript reserved word indicating that a number is not a legal number.
+You can use the global JavaScript function isNaN() to find out if a value is a number: isNaN(x);
+NaN is a number: typeof NaN returns number:typeof NaN;// returns "number"
+Infinity (or -Infinity) is the value JavaScript will return if you calculate a number outside the largest possible number.
+Division by 0 (zero) also generates Infinity.
+The toString() method returns a number as a string:x.toString(); 
+toExponential() returns a string, with a number rounded and written using exponential notation:x.toExponential(2); 
+toFixed() returns a string, with the number written with a specified number of decimals:x.toFixed(6); 
+toPrecision() returns a string, with a number written with a specified length:x.toPrecision(2);
+valueOf() returns a number as a number: x.valueOf();
+Number() can also convert a date to a number.Returns the number of milliseconds since 1.1.1970.:Number(new Date("2017-09-30"));// returns 1506729600000
+parseInt() parses a string and returns a whole number. Spaces are allowed. Only the first number is returned:parseInt("10.3 20 30");// returns 10
+parseFloat() parses a string and returns a number:parseInt("10.3 20 30");// returns 10.3
+
+Number Properties:
+MAX_VALUE	        Returns the largest number possible in JavaScript
+MIN_VALUE	        Returns the smallest number possible in JavaScript
+POSITIVE_INFINITY	Represents infinity (returned on overflow)
+NEGATIVE_INFINITY	Represents negative infinity (returned on overflow)
+NaN	                Represents a "Not-a-Number" value
+!Number Properties Cannot be Used on Variables:var y = x.MAX_VALUE;// y becomes undefined
+
+Array:
+Arrays are  a special kind of objects with numbered indexes.
+Stores variables next to each other in memory and points the first memory address.
+For simplicity, readability and execution speed do not use new Array().
+Instead use this: var cars = ["Saab", "Volvo", "BMW"];
+Access to a element in array: var name = cars[0];
+Change: cars[0] = "Opel";
+Access to full array: document.getElementById("demo").innerHTML = cars; 
+!Adding elements with high indexes creates empty elements in array.
+
+Array Methods:
+toString() converts an array to a string of (comma separated) array values.
+The join() method also joins all array elements into a string.
+The pop() method removes the last element from an array.
+The push() method adds a new element to an array (at the end).
+The shift() method removes the first array element and "shifts" all other elements to a lower index(also shifted one is assignable):var x = fruits.shift();
+The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements(returns the new array length).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
