@@ -1,9 +1,10 @@
-+Terminal Usage:
+++Terminal Usage:
 Using a terminal allows us to send simple text commands to our computer to do things like navigate through a directory or copy a file,
 and form the basis for many more complex automations and programming skills.
 Windows: Although windows comes with ‘cmd’ you will need to download the tool ‘PowerShell’ in order to run any of the commands in this tutorial.
 Linux: Most Linux distributions supply several, such as: gnome-terminal, konsole, xterm, rxvt, kvt, nxterm, and eterm.
 No need to download anything, just read the help documentation for your distribution to see which one is included.
+
 1_Change Directory
 Command: cd
 Changes the directory of the command line path
@@ -74,16 +75,63 @@ whatis "command"
 Command:man
 man "command"
 
-+How OSs work in general?
+++How OSs work in general?
 
-+Porcess Management
-+Threads and Concurrency
-+Basic Terminal Commands(grep,awk,sed,lsof,curl,wget,tail,head,less,find,ssh,kill)
-+Memory Managment
-+Interprocess Communication
-+I/O Management
-+POSIX Basics(stdin,stdout,stderr,pipes)
-+Basic Networking Concepts
+There are three key elements of an operating system, which are:
+(1) Abstractions (process, thread, file, socket, memory),
+(2) Mechanisms (create, schedule, open, write, allocate), and
+(3) Policies (LRU, EDF)
+
+There are two operating system design principles, which are:
+(1) Separation of mechanism and policy by implementing flexible mechanisms to support policies, and 
+(2) Optimization for common case: Where will the OS be used? What will the user want to execute on that machine? What are the workload requirements?
+
+There are three types of Operating Systems commonly used nowadays.
+The first is Monolithic OS, where the entire OS is working in kernel space and is alone in supervisor mode.
+The second is Modular OS, in which some part of the system core will be located in independent files called modules that can be added to the system at run time.
+And the third is Micro OS, where the kernel is broken down into separate processes, known as servers. Some of the servers run in kernel space and some run in user-space.
+
+++Porcess Management
+A program is basically a program in execution. The execution of a process must progress in a sequential fashion.
+To put it in simple terms, we write our computer programs in a text file, and when we execute this program,
+it becomes a process which performs all the task in the program.
+When a program is loaded into the memory and it becomes a process, it can be divided into four sections: stack,heap,text,data.
+Stack: The process Stack contains the temporary data, such as method parameters, return adress and local variables.
+Heap: This is dynamically allocated memory to a process during its run time.
+Text: This includes the current activity represented by the value of Program Counter and the contents of the processor's registers.
+Data: This section contains the global and static variables.
+When a process executes, it passes through different states. These stages may differ in different operating systems,
+and the names of these states are also not standardized.
+In general a process can have one of the following five states at a time:
+
+Start->	Ready-><-Running->Terminated
+             /\  |
+             |   \/ 
+            W a i t
+Start:
+The initial state whe a process is first started/created.
+Ready:
+The process is waiting to be assigned to a processor.
+Ready processes are waiting to have the processor allocated to them by the operating system so that they can run.
+A process may come into this state after the Start state, or while running it by but getting interrupted by the scheduler to assign CPU to some other process.
+Running:
+Once the process has been assigned to a processor by the OS scheduler, the process state is set to running and the processor executes its instructions.
+Waiting:
+The process moves into the waiting state if it needs to wait for a resource, such as waiting for user input, or waiting for a file to become available.
+Terminated or Exit:
+Once the process finishes its execution, or it is terminated by the operating system, it is moved to the terminated state where it waits to be removed from main memory.
+
+
+
+
+
+++Threads and Concurrency
+++Basic Terminal Commands(grep,awk,sed,lsof,curl,wget,tail,head,less,find,ssh,kill)
+++Memory Managment
+++Interprocess Communication
+++I/O Management
+++POSIX Basics(stdin,stdout,stderr,pipes)
+++Basic Networking Concepts
 
 
 
@@ -209,3 +257,4 @@ man "command"
 References:
 University of Washington, What is Terminal
 Tech Republic,16 Terminal commands every user should know
+James Le,medium,How os work 10 concepts you should know as a developer
