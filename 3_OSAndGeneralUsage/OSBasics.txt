@@ -75,7 +75,9 @@ whatis "command"
 Command:man
 man "command"
 
-++How OSs work in general?
+
+
+++How OSs work in general?:
 
 There are three key elements of an operating system, which are:
 (1) Abstractions (process, thread, file, socket, memory),
@@ -91,7 +93,9 @@ The first is Monolithic OS, where the entire OS is working in kernel space and i
 The second is Modular OS, in which some part of the system core will be located in independent files called modules that can be added to the system at run time.
 And the third is Micro OS, where the kernel is broken down into separate processes, known as servers. Some of the servers run in kernel space and some run in user-space.
 
-++Porcess Management
+
+
+++Porcess Management:
 A program is basically a program in execution. The execution of a process must progress in a sequential fashion.
 To put it in simple terms, we write our computer programs in a text file, and when we execute this program,
 it becomes a process which performs all the task in the program.
@@ -121,15 +125,120 @@ The process moves into the waiting state if it needs to wait for a resource, suc
 Terminated or Exit:
 Once the process finishes its execution, or it is terminated by the operating system, it is moved to the terminated state where it waits to be removed from main memory.
 
+Process Control Block(PCB): A data structure maintained by the operating system for every process.
+The PCB is identified by an integer process ID(PID).
+A PCB keeps all the information needed to keep track of a process as listed below:
+PID,State,Pointer,Priority,Program counter,CPU registers, I/O information, Accounting information etc...
+PID: Unique identification for each of the processes in the operating system.
+State: The current state of the process(ready,running,waiting or else)
+Pointer: A pointer to the parent process
+Priority: This is required to allow/disallow access to system resources.
+Program counter: A pointer to address of the instruction to be executed for this process.
+CPU Registers: Various CPU registers where processes need to be stored for execution for running state.
+I/O information: This includes a list of I/O devices allocated to the process.
+Cpu scheduling information: Process priority and other scheduling information which is required to schedule the process.
+Memory management information: This includes the information of page table, memory limit, and segment table depending on the memory used by the OS.
+Account information: This includes the amount of CPU used for process execution, time limits, execution ID and so on.
+IO status information: This includes a list of I/O devices allocated to the process.
 
 
+++Threads and Concurrency:
+A thread is a flow of exeution through the process code.
+It has its own program counter that keeps track of which instruction to execute next.
+It also has system registers which hold its current working variables, and a stack which contains the execution history.
+A thread shares with its peer threads various information like code segment,data segment and open files.
+When one thread alters a code segment memory item all other threads see that.
+
+A thread is also called a lightweight process.
+Threads provide a way to improve applicaton performance through parallelism.
+Threads represent a software approach to improving the performance of OS by reducing the overhead.
+A thread is equivalent to a classical process.
+
+Each thread belongs to exaclty one process, and no thread can exist outside a process each thread represents a seperate flow control.
+Threads hav been successfully used in implementing network serves and web servers.
+They also provide a suitable foundation for parallel execution of applications on shared memory multiprocessors.
+
+Advantages:
+Minimize the context switching time
+Using them provides concurrency within a process
+They provide efficient communication
+It is more economical to create and context switch threads
+Threads allow utilization of multiprocessor architectures to a greater scale and efficiency
+
+Implemented in two ways:
+User level threads: User-managed threads
+Kernel level threas:Operating system managed threads acting on a kernal an operating system core
+
+User level threads:
+In this case the thread management kernel is not aware of existence of threads. The thread library contains code for creating and destroying threads.
+The thread library contains code for creating and destroying threads , for passing messages and data between threads for scheduling thread  execution,
+and for saving and restoring thread contexts.
+The application starts with a single thread.
+
+Advantages:
+Thread switching does not require Kernel mode privileges.
+Can run on any OS.
+Scheduling can be application specific in the user level thread.
+Fast to create and manage
+
+Disadv:
+In typical os most system calls are blocking
+Multithreading application cannot take advantage of multiprocessing
+
+Kernel level threads:
+In this case thread managment is done by the Kernel.
+There is no thread management code in the application area.
+Kernel threads are supported direclty by the OS.
+Any application can be programmed to be multithreaded.
+All of the threads within an application are supported within a single process.
+The kernel maintains conext info for the process as a whole and for individuals threads within the process.
+Scheduling by the Kernel is done on a thread basis. The kernel performs thread creation,
+scheduling and management in kernel space. Kernel threads are generally slower to create and manage than user threads.
+
+Adv:
+The kernel can simultaneously schedule multi threads from the same process on multiple processes
+If one thread in a process is blocked the kernel can schedule another thread of the same process
+Kernel routines themselves can be multithreaded
+
+Disadv:
+Kernel threads are generally slower to create and manage than the user threads
+Transfer of control from one thread to another within the same process requires a mode switch to the kernel
 
 
-++Threads and Concurrency
-++Basic Terminal Commands(grep,awk,sed,lsof,curl,wget,tail,head,less,find,ssh,kill)
+Scheduling:
+ The process of scheduling is the responsibility of the process manager that handles the removal of the running process from the CPU an
+the selection of another process on the basis of a particular strategy.
+
+Process scheduling is an essential part of a multiprogramming operating system.
+These operating systems allow more than one process to be loaded into the executable memory at a time and the loaded process shares the
+Cpu using time multiplexing.
+
+The OS maintains all process control blocks(PCBs) in process scheduling queues. The OS maintains a seperate queue for each of the process states,
+and PCBs of all processes in the same execution state areplaced in the same queue. When the state of a process is changed,
+its PCB is unlinked from its current queue and moved to its new state queue.
+
+The OS maintains the following important process scheduling queues:
+Job queue: This queue keeps all the processes in the system
+Ready queue: Keeps a set of all processes residing in the main memory ready and waiting to execute.
+A new process is always put in the queue.
+Device queues: The processes which are blocked due to unavailability of an I/O device constitute this queue.
+
+The OS can use diferent policies to manage each queue(FIFO). The OS scheduler determines how to move processes
+between the ready and run queues which can only have one entry per processor core on the system.
+Two-state process models refer to running and non-running states:
+Running: When a new process is created it enters into the system in the running state.
+Not running: Processes that are not running are kept in queue, waiting for their turn to execute.
+Each entry in the queue is a pointer to a particular process.
+Queue is implemented by using a linked list.
+The use of dispatcher is as follows: When a process is interrupted, that process is transferred in the waiting queue.
+If the process has completed or aborted, the process is discarded. Either case the dispacther then selects a process from the queue
+to execute.
+
 ++Memory Managment
 ++Interprocess Communication
 ++I/O Management
+
+++Basic Terminal Commands(grep,awk,sed,lsof,curl,wget,tail,head,less,find,ssh,kill)
 ++POSIX Basics(stdin,stdout,stderr,pipes)
 ++Basic Networking Concepts
 
