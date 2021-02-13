@@ -456,10 +456,48 @@ Command1>capture.txt2>&1
 The above command will save the stdout and stderr into capture.txt file
 
 ++Basic Networking Concepts
+Networks are made up of various devices such as computer, switches,routers connected togeter by
+caples or wireless signals.
+Clients and Servers:
+Server is a computer thtat holds content and services such as website a media file or chat app.
+A client is a different computer generally user.
+The client can connect over a netwrok  to exchange info.
 
+Ip addresses:
+In order to send and direct data across network computer need to be able to identify destinations and origins.
+This identifiaction is IP address.
+It is set of numbers seperated by dots like 173.194.43.7.
+It is similar to street adresses.
+There are different classifications or types of IP addresses. A network can be public, private.
+Public Ip addresses are accesible anywhere on the internet.
+Private IP addresses are not and most are typşcally hidden behind a device with public IP address.
 
+Network Hubs and Switches:
+Traditionally computers are connected via cables.
+The cable used most often is Ethernet which consist of four pairs of wires.
+"Hub" is a device, all computers are connected to this device.
+Hub controls the communication because we cant connect every pc with other pcs one by one.
+A network with hub may slow down if many computers are sending messages at the same time.
+For this problem there is "switch". Instead of repeating all messages that come in,
+a switch only sends the message to the intended destination. This eliminates unnecessary repetation.
+Also switches remember the destination so they do not try every optional connection way.
 
+Routers and Firewalls:
+Routers do the majority of the hard work on a network. They make the decision about all the messages that travel
+on the network and whether to pass messages to and from outside networks. There are three functions:
+Seperate and Bridge:
+Routers seperate networks into sections, or bridge different networks together, as we see in the example above
+the private network of 192.168.1 street is bridged to the internet with a public ip address.
 
+Assign IPs:
+They can assign IP addresses In the example of 192.168.1 street if a new house is bult on the street
+it would get whatever the next highest house number available.
+In the case of routers they assign IP addresses using DHCP Dynamic host configuration protocol.
+
+Firewall and protect:
+They can filter messages or keep users out of private networks. Most routers have a Firewall built in.
+This is a software function that keeps unwanted messages from raching the computters on the inside or private part 
+of the network.
 
 
 References:
@@ -467,3 +505,4 @@ University of Washington, What is Terminal
 Tech Republic,16 Terminal commands every user should know
 James Le,medium,How os work 10 concepts you should know as a developer
 udhayaas97,medium,posix basics
+commotionwireless,learn networking basics
