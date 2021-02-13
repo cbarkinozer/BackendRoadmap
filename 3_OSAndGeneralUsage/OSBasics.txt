@@ -337,124 +337,125 @@ and various settings.
 These include the I/O and memory types and the interruptions and states for the CPU cycles.
 
 ++Basic Terminal Commands(grep,awk,sed,lsof,curl,wget,tail,head,less,find,ssh,kill)
+
+grep:
+lets you search through all the text in a given file.
+Ex: grep blue notepad.txt
+
+awk:
+Enables programmer to write tiny programs.
+Searches one or more files to see if they contain lines that matches with the specified patterns
+than performs the associated actions.
+Ex:
+awk option 'selection_criteria{acion }' input-file > output-file
+
+sed:
+Stream editor, can perform lots of functions on file like searching,find and replace
+insertion or deletion. You can manipulate files without opening.
+Ex:
+sed OPTIONS...[SCRIPT][INPUTFILE...]
+
+lsof:
+Stands for List of open file.
+Provides a list of files that are opened.
+It gives info to find out the files which are opened by which process.
+It lists out all open files in output console.
+lsof [option][user name]
+
+curl:
+Transfer data to or from a server, using any of the supported protocols(HTTP,FTP,IMAP,POP3,SCP,SFTP,SMTP,TFTP,TELNET,LDAP,FILE).
+Prefered for automation since it is designed to work without user interaction.
+Can transfer multiple files at once.
+Ex:
+curl[options][URL...]
+
+wget:
+You can download files from the internet.
+Ex:
+wget www.google.com
+
+tail:
+Display the last ten lines of a text file.
+Ex:
+tail -n filename.txt
+
+head:
+View the first lines of any text file.
+By default it will show the first ten lines but you can change this number.
+Ex: 
+To show first five lines
+head -n 5 filename.ext
+
+less:
+Displays the contents of a file or command output one page at a time.
+Does not read entire file which results much faster load times.
+Used for opening large files.
+Ex:
+less[OPTIONS] filename 
+
+find: 
+Similar to the locate command using find also searches for files and directories.
+The differerence is you use the find command to locate files within a given directory.
+Ex:
+find/home/-name notes.txt command will search for a file called notes.txt within the home directory and its subdirectories.
+Other variations:
+To find files in the current dirctory use, find.-namenotes.txt
+To look for directories use,/ -type d-name notes.txt
+
+ssh:
+Secure encrypted connection between two hosts over an insecure network.
+Used for terminal access,file transfer and for tunneling other applications.
+ssh sample.ssh.com
+
+kill:
+If you have an unresponsive program you can terminate it manually by kill command.
+It will send a certain signal to the misbehaving app and instructs the app to terminate itself.
+There are 64 signals but people usally use 2 signals:
+SIGTERM(15):
+Request a program to stop running and gives it some time to save all of its progres.
+If you don't specify the signal when entering the kill command this signal will be used.
+SIGKILL(9):
+Forces programs to stop immediately.
+Unsaved progress will eb lost.
+Besides signals you also need to know the process identification number(PID) of the program
+you want to kill.
+If you don't know the PID simply run the command ps ux.
+Ex:
+kill[signal option] PID
+
+
 ++POSIX Basics(stdin,stdout,stderr,pipes)
+POSIX stands for "Portable Operating System Interface" and defines a set of standards to provide compatibility between different computing platforms.
+POSIX defines various tools interfaces, commands and APIs for UNIX-like operating systems and others.
+Stdin:
+stdin is the standard input stream. This accepts text as its input.
+Stdout:
+stdout is the standard output stream to write the output data.
+Stderr:
+stderr is the standard output stream to show error messages.
+Pipes:
+Pipes are mechanisms for unidirectional interprocess or interthread communication within the scope of a single machine.
+Logically a pipe consists of two connected termini, one to which data can be written and another from
+which that data can subsequently be read with a data buffer between such that writes and reads are not required to be
+synchronous.
+Pipes should be distinguished from shell pipelines which are an application of pipes.
+Consider this command: ls|cat
+the ls output(stdout) is piped into another command(cat)
+Redirect:
+The > redirection symbol works with stdout by default.
+1>to stdout redirect.> is shortand for 1>
+2>to stderr redirect
+Ex:
+Command1> capture.txt
+Above command will save the stdout into the caputre.txt file.
+Command2>capture.txt
+The above command will save the stderr into the capture.txt file.
+Command1> capture.txt2>error.txt
+The above command will save the stdout in the capture.txt and stderr in error.xt file
+Command1>capture.txt2>&1
+The above command will save the stdout and stderr into capture.txt file
+
 ++Basic Networking Concepts
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -465,3 +466,4 @@ References:
 University of Washington, What is Terminal
 Tech Republic,16 Terminal commands every user should know
 James Le,medium,How os work 10 concepts you should know as a developer
+udhayaas97,medium,posix basics
