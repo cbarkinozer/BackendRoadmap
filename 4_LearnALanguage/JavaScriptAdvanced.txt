@@ -1,2 +1,27 @@
 //I am interested in advanced concepts of java but while I just learned JavaScript, I decided to study advanced JavasScript(also its recommended by the roadmap).
 //Study JS forms,objects,functions,classes,async,html dom, browser bom, ajax, json, web apis, js vs jquery
+
+JS Forms:
+Form validation:
+If a form field(fname) is empty, the function alerts a message, and returns false to prevent the form from being submitted:
+
+function validateForm() {
+  var x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+
+Automatic HTML Form Validation
+
+HTML form validation can be performed automatically by the browser:
+If a form fild fname is empty the required attribute prevents this form from being submitted:
+
+<form action="/action_page.php" method="post">
+  <input type="text" name="fname" required>
+  <input type="submit" value="Submit">
+</form>
+
+Reference:
+w3school,javascript
