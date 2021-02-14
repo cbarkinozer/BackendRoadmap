@@ -1,3 +1,76 @@
 
+++PostgreSQL:
+It is a powerful ope source object relational database system.
+It has more than 15 years of active developement and a proven architecture that has earned it 
+a strong reputation for reliability, data integrity and correctness.
+PostgreSQL runs on all major operating systems.
+It supports text,image,sound, video, programming interfaces for c,cpp,perl,ruby,tcl,odcb.
+
+Syntax:
+
+ABORT:
+Abort the current transaction:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 References:
 tutorialspoint,PostgreSql
