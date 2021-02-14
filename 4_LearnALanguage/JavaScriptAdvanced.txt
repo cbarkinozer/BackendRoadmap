@@ -175,9 +175,38 @@ Use const by default, unless a variable needs to be reassigned.
 The var keyword must not be used
 
 Memory Leaks:
+Just like the memory suggests, memory leaks are pieces of memory that the application have used in the past 
+but is not needed any longer but has not yet been return back to the OS or the pool of free memory.
+Four types of common JS leaks:
+
+Global leaks:
+JavaScript handles undeclared variables in an interesting way:
+when a undeclared variable is referenced, a new variable gets created in the global object.
+can be avoided using 'use strict';
+Unexpected globals is certainly an issue, however, more often than not your code would be infested with explicit global variables which by definition cannot be collected by the garbage collector.
+Special attention needs to be given to global variables used to temporarily store and process large bits of information.
+Use global variables to store data if you must but when you do, make sure to assign it as null or reassign it once you are done with it.
+
+Timers or callbacks that are forgotten:
+When using observers, you need to make sure you make an explicit call to remove them once you are done with them
+(either the observer is not needed anymore, or the object will become unreachable).
+Luckily, most modern browsers would do the job for you: they’ll automatically collect the observer handlers once
+the observed object becomes unreachable even if you forgot to remove the listener.
+
+Closures:
+An inner function that has access to the outer (enclosing) function’s variables.
+The thing to remember is that once a scope for closures is created for closures in the same parent scope, the scope is shared.
+
+Out of DOM references:
+There are cases in which developers store DOM nodes inside data structures.
+Suppose you want to rapidly update the contents of several rows in a table.
+If you store a reference to each DOM row in a dictionary or an array, there will be two references to the same DOM element:
+one in the DOM tree and another in the dictionary.
+If you decide to get rid of these rows, you need to remember to make both references unreachable.
 
 
 
-Reference:
+References:
 Jamie Uttariello,medium,The javascript Runtime Environment
 Ethan Nam,medium,Javascripts memory model
+Zlatkov,medium,how javascript works memory management how to handle 4 common memory leaks
