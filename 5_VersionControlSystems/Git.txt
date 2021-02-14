@@ -1,0 +1,24 @@
+++Git:
+Version control systems allows you to revert files back to a previous state, revert the entire project back to a previous state
+review changes made over time see who last modified smth that might be causing a problem, who introduced an issue and when and more.
+Git is a version control system for tracking changes in computer files and coordinating work on those files multiple people.
+Every user clones a copy of a repository(collection of files) ad has the full history of the project on their own hard drive.
+
+Repository:
+As known as repo is nothing but a collection of source code.
+There are four fundamental elements in the Git Workflow.
+Working Directory, Staging Area,Local Repository(Head) and Remote Repository(Master).
+If you consider a file in your Working Directory it can be in three possible states.
+It can be staged. Which means the files with the update changes are marked to be commited to the local repository but not yet comitted.
+It can be modified. Which means the files with the updated changes are not yet stored in the local reposityor.
+It can be commited. Which means that the changes you made to your file are safely stored in the local reposity.
+git add: add a file that is in the working directory to the staging area.
+git commit: add all files that are staged to the local repository.
+git push: add all comitted files in the local repository to the remote repository. So in remote repo all files and changes will be visible
+to anyone with acces to the remote repo.
+git fetch: get files from the remote repo to the local repo but not in the working directory.
+git merge get the files from the local repo into the working directory.
+git pull get files from the remote repo directly into the working directory. Equivalent toa git fetch and a gi merge.
+
+References:
+freecodecamp,Learn the basics of git under 10 min
