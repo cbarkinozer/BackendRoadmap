@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- Switch background color button sequentially(css js in html) -->
+<html>
+<head>
+	<title>Switch Background Color</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<button>Switch color</button>
+    <script type= "text/javascript">
+    var color =["#222f3e","#f368e0","#ee5253","#0abde3","10ac84","222f3e","5f27cd"]
+    var i=0;
+    document.querySelector("button").addEventListener("click",function(){
+      i=1<color.length ? ++i: 0;
+      document.querySelector("body").style.background=color[i]})
+    </Script>
+  <style>
+  body{
+  margin:0;
+  padding:0;
+  background:#222f3e;
+  }
+  button{
+  position:absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding:10px;
+  background: #fff;
+  border: none;
+  outline:none;
+  font-size:18px;
+  text-transform:uppercase;
+  cursor: pointer;
+  }
+  </style>
+  </body>
+</html>
