@@ -1,0 +1,6 @@
+++ORMs:
+++ACID:
+++Transactions:
++N+1 Problem:
+++Database Normalization:
+++Indexes and how they work:
