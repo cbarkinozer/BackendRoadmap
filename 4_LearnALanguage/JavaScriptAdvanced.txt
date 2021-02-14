@@ -1,27 +1,183 @@
 //I am interested in advanced concepts of java but while I just learned JavaScript, I decided to study advanced JavasScript(also its recommended by the roadmap).
 //Study JS forms,objects,functions,classes,async,html dom, browser bom, ajax, json, web apis, js vs jquery
 
-JS Forms:
-Form validation:
-If a form field(fname) is empty, the function alerts a message, and returns false to prevent the form from being submitted:
+++The Javascript Runtime Environment:
+When you visit a website you do so within a webbrowser.
+Each browser has a JS Runtime Environment.
+In the environment are Web Api's that a developer can access to build a program.
+Ajaz the dom tree and other apis are not part of js they are just objects with
+properties and methods provided by the browser and made availale in the browsers js runtime environment.
 
-function validateForm() {
-  var x = document.forms["myForm"]["fname"].value;
-  if (x == "") {
-    alert("Name must be filled out");
-    return false;
-  }
+Also in the runtime environment is a js engine that parses the code.
+Each browser has its own version of a js engine.
+Chrome uses what it calls its v8 js engine and that is what we analyze now.
+
+The V8 JS Engine
+Once chrome rceives js code or scripts o the web page the v8 js engines starts parsing.
+First it will partially parse the code checking for syntax errors.
+If it finds none it starts reading the code from top to bottom.
+Its ultimate goal is to turn the js code into machine code that the computer can understand.
+But before we understand what exactly it does with the code we must understand the enviornment
+in whcih it is parsed.
+
+JS Runtime Environment
+Think of the JS runtime environment as a big container.
+Withi the big container are other smaller containers.
+As the JS engine parses the code it starts putting pieces of it into different containers.
+
+
+| JS  RUNTIME    ENVIRONMENT                    |
+|V8 JS ENGINE        |
+|MemoryHeap|Call stack|Event Loop|Web      Apis |
+                                | Callback queue|
+|           SOURCE CODE                         |
+
+The Heap: The first container in the environment which also part of v8 js engine.
+As the v8 js engine comes across variables and function declarations in  the code it stores them in heap.
+
+The stack:Also part of js engine. If engine come across an actionable item like a function call it adds it to stack.
+Once function is aded to stack js engine jumps right in and starts parsing its code adding variables to heap
+adding new function calls to the top of the stack or sending itself to the third contanier where web api calls go.
+
+When a function returns a value or is sent to the web api container it is popped off the stack and moves to the next
+function in the stack. If the JS engine gets to the end of the function and no return value is explicitly written,
+the JS Engine reutnr undefined and pops off the function from the stack.
+This process of parsing a function and popping it off the stack is what they mean when they say js runs synchronously.
+It does one thing at a time on a  single thread.
+
+Note- The stack is a data structure that runs LIFO. No function other than the one at the tp of the stack will ever be in
+focus and the engine will not öove to the next unfcitio unless the one above it is popped off.
+
+The web api cotainer:
+Web api calls were sent to the web api container from the stack like event listeners HTTP/AJAX request or timing
+functions sit there until an action is triggered.
+Either a click happens or the HTTP request finishes getting its data from its source or a timer reaches its set time.
+In each instance once an action is triggered a callback function is sent to the fourth and final container the callback queue.
+
+The callback queue
+It will store all the callback functions in the order in which they are added.
+It will wait until the stack is completely empty.
+When the stack is empty it will send the callback function at the beginning of the queue to the Stack.
+When the stack is clear again it will send over its next callback function. 
+
+The Event Loop
+Can be thought as a thing inside the js runtime environment.
+Its job is to constantly look at the stack and the queue.
+If it sees the stack is empty it will notify the queue and send over its next callback function.
+The queueue and the stack might be empty for a period of time but the event loop never stops checking both.
+At any time a callback ufnction ca be added to the queue after a action is triggered from the Web api container.
+
+This is what they mean when they say js can run asynchronously.
+It isn actually true it seems ture.
+JS can only ever execute one function at a time whatever is at top of stack .
+Because Web API container can forever add callbacks to the queue  and the queue can forever add those callbacks to the stack
+we think js as being asynchronous.
+This is eally the great power of the language.
+Its ability to be synchronous yet run in as asynchronous manner.
+
+Blocking vs nonblocking IO
+When we talk about blocking I/O, think of an infinite loop, where a function just keeps running.
+If the function never stops running then it will never get popped off the stack, thus ‘blocking’ the next function in the stack from ever running
+Another possibility is running a function that has so much complex logic and calculations it thus takes so much time to run that it 
+bşpcls the next function from running.
+These are things to be aware of when creating code but these are more programming errors and poorly written code that block io rather
+than being the fault of the language.
+
+One thing that can be blocking io is an HTTP request. 
+Say you make a request to some externa lsite data and you have to wait for that sites network.
+The network may never respond and your code will ultimately be stuck
+But JS handles this in runtime environment.
+It sends the HTTP request tot he WEB API and pops it off the stack so that the next function can run while the Web api waits for its data to return.
+If the HTTP request never gets its data back the rest of the program wil contimue running.
+This is what we mean when we say js is a noncloking language.
+
+Ex code:
+setTimeout(function(){
+  console.log('Hey, why am I last?');
+}, 0);
+function sayHi(){
+  console.log('Hello');
 }
+function sayBye(){
+  console.log('Goodbye');
+}
+sayHi();
+sayBye();
 
-Automatic HTML Form Validation
+This code prints Hello Goodbye then undefined then HEy, Why am I lastPP
+Even though the setTimeout function is called first and is supposed to run in zero seconds it outputs last.
+Go through each line and try to understand the process of the JSEngine as it parses this code.
+Try and think why the setTimeout() call to the console after sayHi() and sayBye().
+1_The js engine parses the entire script checking for syntax errors.
+It sees none so it starts more fully parsing from the top.
+2_It sees a setTimeout function call and pushes it to the top of the Stack
+3_It jumps right into the function call, sees it is part of the Web API and thus sends it
+over the Web API container and pops it off the stack.
+4_Because the timer is set to zero seconds the web api container immediately pushes its
+anonymous function to the callback queue.
+The event loop checks the stack to see if its empty but its not because as soon as the
+setTimeout function was sent over the Web api container, the js engine saw two function declarations
+stored them in the heap and saw a function call of sayHi and pushed in to the stack
+5_ that sayhi() function calls console.log() which pushed to the top of the stack
+6_the js engine jumps right into parsing that function. It returns a message to the console hi and is popped off
+7_the js engine moves back into the sayhi() function gets to  its closing bracket and pops it off the stack.
+8_as soon its popped off the stack the next function call, saybye() is pushed to the stack.
+It is parsed calls console.log() which gets pushed to the top of the stack it returns a message
+is popped off the stack then its original function is popped off the stack.
+9_ The event loop sees that the stack if inally empty it lets the queue know and the queue pushes its
+anonymous function to the stack.
+10_the anonymous function is parsed and it calls console.log() which is pushed on the stack
+11_The console.log() function is executed ad is popped off the stack.
+The anonymous functio is popped off the stack and the program is finally finished.
 
-HTML form validation can be performed automatically by the browser:
-If a form fild fname is empty the required attribute prevents this form from being submitted:
+Browser vs Node.js environment:
+Node.js provides completely different runtime environment also powered by v8 js engine.
+This means node.js wil not provide for you the dom tree ajax or other web apis.
 
-<form action="/action_page.php" method="post">
-  <input type="text" name="fname" required>
-  <input type="submit" value="Submit">
-</form>
+Concurrent code is much better than sequential as its nonblocking and can handle multiple users or events at the same time without any problem.
+However it is important to remember that JS is only a viable option when fast input output of data is required and not recommended when
+it comes to heavy computing tasks. Going for CPU intensive applications recommended.
+
+A lot of problems arise when using sequential code, in today's world, everything is connected to the internet.
+This means your application might have to make some API calls every now and then.
+It’s difficult to know how long it will take for the data to be processed and retrieved, you wouldn’t want your application to hang 
+while it’s loading your user’s feed, would you? 
+The event loop in NodeJS sort of runs your script over and over every time an event is detected.
+Since JS is single threaded, it offloads it’s operations mostly as callbacks in NodeJS thereby ensuring executions don’t block each other
+while they are running.
+When a NodeJS app starts, the event loop is initialized, processes the script then begins processing the event loop.
+Although NodeJS is designed with an asynchronous event model where it’s APIs make use of callbacks, the fact that it is single-threaded 
+means it can only run a single process with a single thread on a single core.
+This makes it highly unsuitable for CPU intensive tasks as only I/O operations are executed in parallel.
+However, with that said, you can make use of multiple cores and processes in NodeJS using a load balancer that would distribute 
+your events across all your NodeJS processes just in case you already have a production app in NodeJS that does some CPU intensive tasks 
+and don’t have time to rewrite in Go or Python.
+
+++JS Memory Model:
+let myNumber = 23
+When this code executed js will:
+1_create unique identifier for your variable("myNumber")
+2_Allocate an address in memory(will be assigned at runtime)
+3_Store a value at the address allocated(23)
+
+let newVar = myNumber
+newVar will point the myNumber location and then if I increment
+myNumber = myNumber + 1
+myNumber will show another address that has the value 24 but newVar will point previous point
+note: The heap is where non-primitives are stored.
+The key difference is that the heap can store unordered data that can grow dynamically—perfect for arrays and objects.
+
+In general, we should be using const as much as possible and only using let when we know a variable will change.
+
+However, this is not recommended.
+Google, who has some of the best coders in the world, says in their JavaScript style guide, “Declare all local variables with either const or let.
+Use const by default, unless a variable needs to be reassigned.
+The var keyword must not be used
+
+Memory Leaks:
+
+
 
 Reference:
-w3school,javascript
+Jamie Uttariello,medium,The javascript Runtime Environment
+Ethan Nam,medium,Javascripts memory model
