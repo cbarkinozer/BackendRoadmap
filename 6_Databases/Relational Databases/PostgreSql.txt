@@ -115,7 +115,7 @@ Sorting data:
 SELECT * FROM person ORDER BY country_of_birth;
 
 Comparison Operators:
-
+1:26.12
 
 
 
