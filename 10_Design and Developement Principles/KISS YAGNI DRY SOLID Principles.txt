@@ -1,0 +1,40 @@
+These principles are about writing clean code.
+++DRY:
+Don't repeat yourself.
+"Every peace of knowledge must have a single unambiguous autorative representation within a system."
+You should not have duplicated code.
+"DRY is about the duplication of knowledge, of intent.
+It's about expressing the same thing in two different places possibly in two totally different ways."
+++YAGNI:
+You ain't gonna need it.
+This is from software developement methodology of EXtreme Programming(XP).
+You should not create features that it's not really necessary.
+Aims for simpler solution.
+"Always implement things when you actually need them never when you just forsee that you need them"
+++KISS:
+Keep it simple, stupid.
+You should avoid unnecessary complexity.
+Write Easier to maintain and understand.
+If it is not refactor it to be easier.
+++SOLID:
+It is an oop principle.
+
+Single responsibility principle:
+" A class should have one and only one reason to change meaning that a class should have only one job"
+
+Open Closed Principle:
+"Objects or entities should be open for extension but closed for modification"
+
+Liskov Substitution principle:
+"Let q(x) be a property provable about object of x of type T.
+Then q(y) should be provable for objects y of type S where S is a subtype of T."
+Every subclass or derived class should be substitutable for their base or parent class.
+
+Interface Segregation Principle:
+Dependency Inversion Principle:
+"Entities must depend on abstractions not on concretions.
+It states that the high level module must not depend on the low level module but they should depend on abstractions."
+
+References:
+Domareski,medium,DRY KISS YAGNI Principles
+Oloruntoba,The first 5 principles of oo desing

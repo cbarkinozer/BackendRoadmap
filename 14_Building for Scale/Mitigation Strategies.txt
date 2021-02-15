@@ -1,0 +1,6 @@
+++Graceful:
+++Degradation:
+++Throttling:
+++Backpressure:
+++Loadshifting:
+++Curcuit Breaker:
