@@ -6,21 +6,53 @@ a strong reputation for reliability, data integrity and correctness.
 PostgreSQL runs on all major operating systems.
 It supports text,image,sound, video, programming interfaces for c,cpp,perl,ruby,tcl,odcb.
 
-Syntax:
+Shell Commands:
+# help		Shows commands
+psql --help 	General syntax help
 
-ABORT:
-Abort the current transaction:
+\q   		Shows postgresql verion
+\h   		Sql commands
+\?   		psql commands
+\g   		terminate with semicolon to execute query
+\copyright  	distribution terms
+\l		list databases
+\c test 	connect to "test" database
 
+CREATE DATABASE test; 	Creates database named test
+DROP   DATABASE test;   Deletes database named test(Deletes everything, avoid using without backup)
+Connection options:
 
+-h, --h=HOSTNAME	database server host or socket directory(default: "local socket")
+-p, --port=PORT		database server port
+-U, --username		database user name
+-w, --no-password	never prompt for password
+-W, --password		force password prompt(should happen automatically)
 
+Creating a table:
+CREATE TABLE table_name{
+Column name+ data type + constraints if any
+}
+How to crate table with Postgres:
 
+CREATE TABLE person{
+id BIGSERIAL NOT NULL PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+gender VARCHAR(6) NOT NULL,
+date_of_birth DATE NOT NULL,
+}
 
+Shell command for creating table(?):
+test=# CREATE TABLE person(
+test(# id INT,
+test(# first_name VARCHAR(50),
+test(# last_name VARCHAR(50),
+test(#gender VARCHAR(7),
+test(# date_of_birth DATE);
+CREATE TABLE
 
-
-
-
-
-
+table=# \d   		List of relations
+test=# \d person  	Table "public.person"
 
 
 
@@ -74,3 +106,4 @@ Abort the current transaction:
 
 References:
 tutorialspoint,PostgreSql
+freecodecamp,youtube,Learn PostgreSQL Full course for beginners
