@@ -1,10 +1,33 @@
-
 ++PostgreSQL:
 It is a powerful ope source object relational database system.
 It has more than 15 years of active developement and a proven architecture that has earned it 
 a strong reputation for reliability, data integrity and correctness.
 PostgreSQL runs on all major operating systems.
 It supports text,image,sound, video, programming interfaces for c,cpp,perl,ruby,tcl,odcb.
+
+Why use PostgreSql?:
+PostgreSQL is an Object Relational Database Management System (ORDBMS).
+PostgreSQL support modern applications feature like JSON, XML etc. .
+PostgreSQL performance well when executing complex queries.
+PostgreSQL is complete ACID compliant.
+PostgreSQL supports Materialized Views.
+Offers useful features like Table partitioning, Point in Time Recovery, Transactional DDL, etc.
+Ability to utilize 3rd party Key Stores in a full PKI infrastructure
+Developers can modify open source code as it is licensed under BSD without the need to contribute back enhancements
+Independent Software Vendors can redistribute it without the fear of being "infected" by an open source license
+Users and Roles can be assigned Object level privileges
+Supports AES, 3DES and other data encryption algorithms.
+
+Disadvantages of PostgreSql:
+The current external solutions require a high learning curve.
+No upgrade facility for major releases.
+The data need to be exported or replicated to the new version.
+Double storage is needed during the upgrade process.
+indexes cannot be used to directly return the results of a query.
+Query execution plans are not cached.
+Bulk loading operations may become CPU bound.
+Sparse Independent Software Vendor support.
+
 
 Shell Commands:
 # help		Shows commands
@@ -20,20 +43,39 @@ psql --help 	General syntax help
 
 CREATE DATABASE test; 	Creates database named test
 DROP   DATABASE test;   Deletes database named test(Deletes everything, avoid using without backup)
-Connection options:
 
+Connection options:
 -h, --h=HOSTNAME	database server host or socket directory(default: "local socket")
 -p, --port=PORT		database server port
 -U, --username		database user name
 -w, --no-password	never prompt for password
 -W, --password		force password prompt(should happen automatically)
 
+Querry Buffer:
+\e [FILE][LINE] 	edit the query buffer(or file) with external editor
+\ef [FUNCNAME [LINE]]	edit function definition with external editor
+\ev [VIEWNAME [LINE]]	edit view definition with external editor
+\p			show the contents of the query buffer
+\r			reset(clear) the query buffer
+\s [FILE]		display history or save it to file
+\w FILE			write query buffer to file
+
+Input/Output:
+\copy ...		perform SQL COPY with data stream to the client host
+\echo[STRING]		write string to standard output
+\i FILE			execute commands from file
+\ir FILE		as \i, but relative to location of current script
+\o [FILE]		send all query results to file or |pipe
+\qecho [STRING]		write string to query output stream(see \o)
+
+
+
 Creating a table:
 CREATE TABLE table_name{
 Column name+ data type + constraints if any
 }
-How to crate table with Postgres:
 
+How to crate table with Postgres:
 CREATE TABLE person{
 id BIGSERIAL NOT NULL PRIMARY KEY,
 first_name VARCHAR(50) NOT NULL,
@@ -42,30 +84,37 @@ gender VARCHAR(6) NOT NULL,
 date_of_birth DATE NOT NULL,
 }
 
-Shell command for creating table(?):
-test=# CREATE TABLE person(
-test(# id INT,
-test(# first_name VARCHAR(50),
-test(# last_name VARCHAR(50),
-test(#gender VARCHAR(7),
-test(# date_of_birth DATE);
+Shell command for creating table:
+CREATE TABLE person(
+id BIGSERIAL NOT NULL PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+gender VARCHAR(7) NOT NULL,
+date_of_birth DATE);
 CREATE TABLE
 
-table=# \d   		List of relations
-test=# \d person  	Table "public.person"
+\d   		List of relations
+\d person  	Table "public.person"
+\dt             List of relations(just tables)
 
+How to insert records into tables:
+INSERT INTO person(
+first_name,
+last_name,
+gender,
+date_of_birth)
+VALUES('Jake','Jones','MALE',DATE'1990-01-10','jake@gmail.com');
 
+Note: If the response to the insertion is "0 1" it means insertion worked.
+Note: Mockaroo API creates test data for you.
 
+Showing values:
+SELECT first_name FROM person;
 
+Sorting data:
+SELECT * FROM person ORDER BY country_of_birth;
 
-
-
-
-
-
-
-
-
+Comparison Operators:
 
 
 
@@ -105,5 +154,4 @@ test=# \d person  	Table "public.person"
 
 
 References:
-tutorialspoint,PostgreSql
 freecodecamp,youtube,Learn PostgreSQL Full course for beginners
