@@ -1,2 +1,132 @@
+++MongoDb:
+Advantages:
+Elastic stacalability: Transparent expansion.
+Big data applications: Massive volumes of data are easily maintained in nosqls.
+Database administration : Require less administration
+Economy: You can store more with less cost
+
+Disadvantages:
+Less mature: New technologies.
+Less support: No remote database administration service.
+Business intelligence and analytics: Lack of ad-ho query functionality.
+Administration: Aim of nosql is no administration requirement but it still does need.
+No advanced experties: It is new so no advanced experties.
+Uses document files like JSON.
+
+Intro commands:
+show dbs		shows databases with their memories
+use test1		switches to db named test1
+show collections	shows collections in database
+db.dropDatabase()	deletes database
+db.createCollection('posts') creates collection named posts
+db.posts.insert({
+	title:'Post One',
+	body:'Body of post one',
+	category:'News',
+	likes:4,
+	tags:['news','events'],
+	user:{
+	name:'John Doe',
+	status: 'author',
+	}
+	date:Date()
+})
+db.posts.find({category:'News'})
+db.posts.find().sort({title:1}).pretty()
+db.posts.find({category:'News'}).count()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 References:
-tutorialspoint,mongoDB
+traversy media,youtube,MongoDB Crash Course
