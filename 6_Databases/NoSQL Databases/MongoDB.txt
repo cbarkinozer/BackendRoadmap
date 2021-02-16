@@ -1,13 +1,3 @@
-++MongoDb:
-MongoDB is a nosql and uses document files like JSON.
-
-Advantages:
-Elastic stacalability: Transparent expansion.
-Big data applications: Massive volumes of data are easily maintained in nosqls.
-Database administration : Require less administration
-Economy: You can store more with less cost
-
-Disadvantages:
 Less mature: New technologies.
 Less support: No remote database administration service.
 Business intelligence and analytics: Lack of ad-ho query functionality.
@@ -75,89 +65,87 @@ Binary data − Used to store binary data.
 Code − Used to store JavaScript code into the document.
 Regular expression − Used to store regular expression.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-References:
-traversy media,youtube,MongoDB Crash Course
-tutorialspoint,mongoDb
+Sharding:
+Sharding is the process of storing data records across multiple machines and it is MongoDB's approach to meeting the demands of data growth.
+As the size of the data increases, a single machine may not be sufficient to store the data nor provide an acceptable read and write throughput.
+Sharding solves the problem with horizontal scaling
+
+Backup:
+
+mongodump	Will dump the entire data of your server into the dump directory
+mongorestore	Restores all of the data from the backup directory.
+
+Relationships:
+Relationships in MongoDB represent how various documents are logically related to each other.
+Relationships can be modeled via Embedded and Referenced approaches.
+Such relationships can be either 1:1, 1:N, N:1 or N:N.
+
+Database References:
+We use the concept of Referenced Relationships(or Manual References) in which we manually store the referenced document's id inside other document.
+However, in cases where a document contains references from different collections, we can use MongoDB DBRefs.
+Consider a database where we are storing different types of addresses (home, office, mailing, etc.) in different collections (address_home, address_office, address_mailing, etc).
+Now, when a user collection's document references an address, it also needs to specify which collection to look into based on the address type.
+In such scenarios where a document references documents from many collections, we should use DBRefs.
+There are three fields in DBRefs:
+$ref − This field specifies the collection of the referenced document
+$id − This field specifies the _id field of the referenced document
+$db − This is an optional field and contains the name of the database in which the referenced document lies
+For example:
+{
+   "_id":ObjectId("53402597d852426020000002"),
+   "address": {
+   "$ref": "address_home",
+   "$id": ObjectId("534009e4d852427820000002"),
+   "$db": "tutorialspoint"},
+   "contact": "987654321",
+   "dob": "01-01-1991",
+   "name": "Tom Benzamin"
+}
+
+Covered Queries:
+A covered query is a query in which:
+All the fields in the query are part of an index.
+All the fields returned in the query are in the same index.
+
+Analyzing Queries:
+Analyzing queries is a very important aspect of measuring how effective the database and indexing design is.
+We will learn about the frequently used $explain and $hint queries.
+$explan: good or analyzing how well your indexes are optimized.
+$hint  : forces the query optimizer to use the specified index to run a query. Tests performance.
+
+Atomic Operations:
+The recommended approach to maintain atomicity would be to keep all the related information, which is frequently updated together in a single document using embedded documents.
+This would make sure that all the updates for a single document are atomic.
+
+Indexing limitations:
+RAM Usage: Should make sure that the total size of the index does not exceed the RAM limit. If it does, it will start deleting indexes.
+Max limit: A collection cannot have more than 64 indexes.
+The length of the index name cannot be longer than 125 characters.
+A compound index can have max 31 fields indexed.
+
+Map Reduce:
+As per the MongoDB documentation, Map-reduce is a data processing paradigm for condensing large volumes of data into useful aggregated results. MongoDB uses mapReduce command for map-reduce operations.
+MapReduce is generally used for processing large data sets.
+db.collection.mapReduce(
+   function() {emit(key,value);},  //map function
+   function(key,values) {return reduceFunction}, {   //reduce function
+      out: collection,
+      query: document,
+      sort: document,
+      limit: number
+   }
+)
+map is a javascript function that maps a value with a key and emits a key-value pair
+
+reduce is a javascript function that reduces or groups all the documents having the same key
+
+out specifies the location of the map-reduce query result
+
+query specifies the optional selection criteria for selecting documents
+
+sort specifies the optional sort criteria
+
+limit specifies the optional maximum number of documents to be returned
+
+Regular Expression:
+MongoDB also provides functionality of regular expression for string pattern matching using the $regex operator
