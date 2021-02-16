@@ -115,42 +115,78 @@ Sorting data:
 SELECT * FROM person ORDER BY country_of_birth;
 
 Comparison Operators:
-1:26.12
+=  Equal
+<= Lesser and equal
+>= Greater and equal
+<> Not Equal
+The response will be t for True, f for False
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Limit offset and fetch:
+SELECT * FROM person LIMIT 5;				First 5 row
+SELECT * FROM person OFFSET 5 LIMIT 5;  		First 5 row from 5. row
+SELECT * FROM person OFFSET 5 FETCH FIRST 5 ROW ONLY;	First 5 row from 5. row
+WHERE:
+SELECT * FROM person WHERE country_of_birth ='China';
+OR country_of_birth = 'France' OR country_of_birth = 'Brazil';
+This query is same as bottom query.
+IN:
+SELECT * FROM person WHERE country_of_birth IN ('China','Brazil','France');
+LIKE:
+SELECT * FROM person WHERE email LIKE '__h@%'
+SELECT * FROM person WHERE date_of_birth BETWEEN '2000-01-01' AND '2015-01-01'
+GROUPBY:
+SELECT * country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth ORDER BY country_of_birth;
+COUNT(*) is an aggregation function and means "number of input rows".
+Min max avarage:
+SELECT MAX(price) FROM car;
+SELECT make,model, MIN(price) FROM car GROUP BY make,model;
+Sum:
+SELECT SUM(price) FROM car;
+Arithmetic Operators:
+SELECT id,make,model, price, ROUND(price * .10,2) ROUND - (price*.10),2) FROM car;
+Alias:
+SELECT id,make,model,price AS original_price, ROUND(price * .10,2) AS ten_percent, ROUND(price * .10),2) AS discount_after_10_percent FROM car;
+Coalesce:
+SELECT COALESCE(email,'Email not provided') FROM person;
+NULLIF:
+SELECT NULLIF(10,10);
+This is how you handle dividing by zero
+COALESCE(10/NULLIF(0,0),0);
+Timestamps and Dates:
+SELECT NOW()::TIME;
+Adding and substracting with dates:
+SELECT NOW() - INTERVAL '10 MONTHS';
+Extracting Fields from Timestamp:
+SELECT EXTRACT(MONTH FROM NOW());
+Age Function:
+SELECT first_name,last_name,gender,country_of_birth_date_of_birth,AGE(NOW(),date_of_birth) AS age FROM person;
+Primary Keys:
+SELECT * FROM person WHERE id=1;
+Unique Constrains:
+ALTER TABLE person ADD PRIMARY KEY(id);
+Check Contrains:
+ALTER TABLE person ADD CONSTRAINT unique-email_address UNIQUE(email);
+How to delete records:
+DELETE FROM person WHERE id= 1011;
+DELETE FROM person WHERE gender ='Female' AND country_of_birth = 'England';
+How to update records:
+UPDATE person SET first_name ='Omar', last_name = 'Montana' WHERE id = 2011;
+On conflict do nothing:
+INSERT INTO person(id,first_name,last_name,gender,country_of_birth) VALUES(2017,'Russ','Ruddoch','Male','Norway') ON CONFLICT(id) DO NOTHING;
+Upsert:
+INSERT INTO person(id,first_name,last_name,gender,country_of_birth) VALUES(2017,'Russ','Ruddoch','Male','Norway') ON CONFLICT(id) DO UPDATE
+ SET gender='Female',first_name=EXCLUDED.first_name,last_name=EXCLUDED.last_name;
+Relationship and foreign keys:
+Tables have relationship with each other. Main table has Primary key, other table has foreign key works as that tables PK.
+Adding relationship between tables:
+In coding file person-car.sql, add to the create table query command this:
+UNIQUE(car_id)
+Ineer Joins:
+JOIN car ON person.car_id = car.id;
+Left joins:
+LEFT JOIN car ON person.car_id = car.id;
+Serial and sequences:
+ALTER SEQUENCE person_id?seq RESTART WITH 10;
 
 
 References:
