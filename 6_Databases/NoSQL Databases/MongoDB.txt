@@ -1,4 +1,6 @@
 ++MongoDb:
+MongoDB is a nosql and uses document files like JSON.
+
 Advantages:
 Elastic stacalability: Transparent expansion.
 Big data applications: Massive volumes of data are easily maintained in nosqls.
@@ -11,7 +13,7 @@ Less support: No remote database administration service.
 Business intelligence and analytics: Lack of ad-ho query functionality.
 Administration: Aim of nosql is no administration requirement but it still does need.
 No advanced experties: It is new so no advanced experties.
-Uses document files like JSON.
+
 
 Intro commands:
 show dbs		shows databases with their memories
@@ -19,6 +21,8 @@ use test1		switches to db named test1
 show collections	shows collections in database
 db.dropDatabase()	deletes database
 db.createCollection('posts') creates collection named posts
+db.COLLECTION_NAME.drop()    drops collection
+
 db.posts.insert({
 	title:'Post One',
 	body:'Body of post one',
@@ -31,19 +35,45 @@ db.posts.insert({
 	}
 	date:Date()
 })
+
+Note: Collection and table are same thing. Database and schema are same thing.
+Note: Projection means selecting only the necessary data.
+Note:Indexes support the efficient resolution of queries. Without indexes, MongoDB must scan every document of a collection to select those documents that match the query statement. 
+Note:Replication is the process of synchronizing data across multiple servers.
+
+
+These commands are self explanatory so I will not comment on them.
 db.posts.find({category:'News'})
-db.posts.find().sort({title:1}).pretty()
+db.posts.find().sort({title:1}).pretty()	pretty():Configures the cursor to display results in an easy-to-read format.
 db.posts.find({category:'News'}).count()
+db.posts.find().limit(2)
+db.posts.find().sort({title:-1}).limit(2)
+db.posts.find().forEach(function(doc){print('Blog Post:'+ doc.title)})
+db.posts.update({title:'Post One'},{$inc:{likes:2}})
+db.posts.update({title:'Post One'},{$rename:{likes:'views'}})
+db.posts.remove({title:'Post Four'})
+db.posts.createIndex({title:'text'})
+db.posts.find($text:{$search:""\Post T\""}).pretty()
+db.posts.update({title:'Post Two'},{$set:{views:10}})
+db.posts.find({views:{$gt:3}})		gt: greater than, gte:greater equal 
+exit
 
-
-
-
-
-
-
-
-
-
+DataTypes:
+String − Most commonly used datatype to store the data.
+Integer − Numerical value. Integer can be 32 bit or 64 bit depending upon your server.
+Boolean − Stores a boolean (true/ false) value.
+Double − Stores floating point values.
+Min/ Max keys − Compares a value against the lowest and highest BSON elements.
+Arrays − Stores arrays or list or multiple values into one key.
+Timestamp − ctimestamp. Useful for recording when a document has been modified or added.
+Object − Used for embedded documents.
+Null − Used to store a Null value.
+Symbol − Used identically to a string; however, it's generally reserved for languages that use a specific symbol type.
+Date − Stores the current date or time in UNIX time format. You can specify your own date time by creating object of Date and passing day, month, year into it.
+Object ID − Used to store the document’s ID.
+Binary data − Used to store binary data.
+Code − Used to store JavaScript code into the document.
+Regular expression − Used to store regular expression.
 
 
 
@@ -130,3 +160,4 @@ db.posts.find({category:'News'}).count()
 
 References:
 traversy media,youtube,MongoDB Crash Course
+tutorialspoint,mongoDb
