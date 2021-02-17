@@ -1,6 +1,47 @@
 ++ORMs:
+It is and Object Relational Mapper.
+They make easier to code.
+Object relational mapping is the idea of being able to write queries like the one above, as well as much more complicated ones
+using object oriented paradigm of your preffered programming language.
+
+Advantages:
+We write in the language you are already using to program not in SQL.
+Switching from databases is easy because abstraction.
+Support for transactions,connecting,pooling,migrations,seeds,strams and all sorts of other goodies.
+Many of the queries you write will perform better if you wrote them yourself.
+
+Disadvantages:
+If you are a SQL master, ORMs will restrict you.
+There is a overhead involved in learning how to use any given ORM.
+Initial configuration of an ORM can be a headache.
+As a developer you do not understand what is going under the ORM.
+
 ++ACID:
+Atomicity,consistency,isolation,durability is a set of properties of database transacions.
+Atomicity: Guarantees each transaction is treated as a single unit which either suceeds completely or fails completely.
+Consistency: Ensures that a transactio can only bring the database from one valid state to another maintaining database invariants.
+Isolation: Transactions are often executed concurrently. Ensures that the concurrent execution of transactions leaves te db same state as sequentially.
+Durability: Guarantees that once a transaction has been commited it will remain committed even in the case of a system failure.(Transactions are recorded in nonvolatile memory)
+
 ++Transactions:
-+N+1 Problem:
+Symbolizes a unit of work performed within a database management system against database.
+
+++N+1 Problem:
+If we use the ORM functions wrong. We might perform N+1 query(search for all data) instead of 1 query.ORMs provide you many options for the
+N+1 problem.
+
 ++Database Normalization:
+Normalization is a database design technique that reduces data redundancy and eliminates undesirable characteristics like anomalies.
+Normalization rules divides larger tables into smaller tables and links them using relationships.
+The purpose of normalization in SQL is to eliminate redudant data and ensure data is stored logically.
+DB Normal forms: 1NF,2NF,3NF,BCNF(Boyce-Codd Normal Form),4NF,5NF,6NF
+Most practical applications, normalization achieves its best in 3NF form.
+
+
+
 ++Indexes and how they work:
+
+
+References:
+Hoyos,bits and pieces,What is an ORM and why you should use it
+Guru99,What is normalization?
