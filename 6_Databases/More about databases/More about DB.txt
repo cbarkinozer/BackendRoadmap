@@ -34,14 +34,53 @@ N+1 problem.
 Normalization is a database design technique that reduces data redundancy and eliminates undesirable characteristics like anomalies.
 Normalization rules divides larger tables into smaller tables and links them using relationships.
 The purpose of normalization in SQL is to eliminate redudant data and ensure data is stored logically.
+Note:A candidate key is a set of attributes (or attribute) which uniquely identify the tuples in relation or table.(Column names that makes rows unique)
+
 DB Normal forms: 1NF,2NF,3NF,BCNF(Boyce-Codd Normal Form),4NF,5NF,6NF
 Most practical applications, normalization achieves its best in 3NF form.
-
-
+1NF: Each table cell should contain a single value. Each record needs to be unique.
+2NF: Be 1NF. Has single Column Primary key.
+3NF: Be 2NF. Has no transitive functional dependecies.
+BCNF(or 3.5NF): Has no more than one Candidate key.
+4NF: Be BCNF.No db table instance contains two or more independent and multivalued data describing the relevant entity.
+5NF: Be 4NF. Cannot be decomposed into any number of smaller tables without loss of data.
+6NF: It is not yet standardized. Coming soon...
 
 ++Indexes and how they work:
+Indexing is the way to get an unordered table into an order that will maximize the query’s efficiency while searching.
+The data structure type is very likely a B-Tree.the main advantage that it is sortable.
+When the data structure is sorted in order it makes our search more efficient.
+
+Types of indexing:
+
+There are two types of databases indexes:
+Clustered
+Non-clustered
+
+Both clustered and non-clustered indexes are stored and searched as B-trees, a data structure similar to a binary tree.
+A B-tree is a “self-balancing tree data structure that maintains sorted data and allows searches, sequential access, insertions, and deletions in logarithmic time.”
+Basically it creates a tree-like structure that sorts data for quick searching.
+
+Clustered Index:
+Clustered indexes are the unique index per table that uses the primary key to organize the data that is within the table.
+The clustered index ensures that the primary key is stored in increasing order, which is also the order the table holds in memory.
+Clustered indexes do not have to be explicitly declared.Created when the table is created.Use the primary key sorted in ascending order.
+
+Non-clustered Index:
+Non-clustered indexes are sorted references for a specific field, from the main table, that hold pointers back to the original entries of the table.
+They are used to increase the speed of queries on the table by creating columns that are more easily searchable.
+Non-clustered indexes can be created by data analysts/ developers after a table has been created and filled.
+
+When not to use indexes:
+When data is written to the database, the original table (the clustered index) is updated first and then all of the indexes off of that table are updated.
+Every time a write is made to the database, the indexes are unusable until they have updated.
+If the database is constantly receiving writes then the indexes will never be usable.
+!! This is why indexes are typically applied to databases in data warehouses that get new data updated on a scheduled basis(off-peak hours) and not production databases which might be receiving new writes all the time
+
+
 
 
 References:
 Hoyos,bits and pieces,What is an ORM and why you should use it
 Guru99,What is normalization?
+dataschool,How indexing works?
