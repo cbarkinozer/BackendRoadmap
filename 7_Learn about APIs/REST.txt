@@ -1,1 +1,70 @@
-.
+++Representational State Transfer(Rest):
+REST is acronym for REpresentational State Transfer.
+It is architectural style for distributed hypermedia systems and was first presented by Roy Fielding in 2000
+REST is acronym for REpresentational State Transfer. It is architectural style for distributed hypermedia systems and was first presented by Roy Fielding in 2000 in his famous dissertation.
+Rest architecture that runs on the HTTP protocol in the communication between client and server.
+REST is a transfer method used in software based on service oriented architecture.
+It provides communication between the client and the server by carrying XML and JSON data.
+Services using REST architecture are called RESTful services.
+
+Like any other architectural style, REST also does have it’s own 6 guiding constraints which must be satisfied if an interface needs to be referred as RESTful.
+These principles are listed below:
+
+Client-server: By seperating the user interface concerns from the data storage concerns,we improve the portability of user interface
+across multiple platforms and improve scalability by simplyfying the server components.
+
+Stateless: Each request from client to server must contain all of the information necessary to understand  the request and cannot take adv
+of any stored context on the server.
+Session state is therefore kept entirely on the client.
+
+Cacheable:
+Cache constraints require that the data within a response to a equest be implicitly or explicitly labeled as cacheable or non-cacheable.
+If a response is cacheable then a client cache is given the right to reuse that response data for later, equivalent requests.
+
+Uniform interface:
+By applying the software engineering principle of generality to the component interface, the overall system architecture is simplified and
+the visibility of interactions is improved.
+In order to obtain a uniform interface, multiple architectural constrainst are needed to guide the behavior of components.
+REST is defined by four interface sontraints identification of resources manipulation of resources through representations
+self-descriptive messages and hypermedia as the engine of application state.
+
+Layered system:
+The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior such that each
+component cannot see beyond the immediate layer with which they are interacting.
+
+Code on demand(optional):
+REST allows client functionaility to be extended by downloading and executing code in the form of applets or scripts.
+This simplifies clients by reducing the number of features required to be pre-implemented.
+
+
+
+HTTP Methods:
+GET: Lists and shows data. Must be secure. It is not secure because data is shown on url. Can make it secure with MD5.
+GET : /orders/{id}
+
+POST: Insert data or update data. Not shown in URL. More secure.
+POST: /orders/
+
+PUT: Updates data. Difference from POST is that even the request is repeated the result will be same.
+PUT : /orders/{id}
+
+PATCH: Used for updating a single part of the data.
+PATCH /addresses/1
+
+DELETE: Used for deleting data.
+DELETE /addresses/id
+
+
+HTTP Status Codes:
+We encounte various HTTP Status Codes returning from APIs.
+These codes provide us with info on whether the transactions are successful or not as well as what went wrong in the application.
+1XX Informative codes
+2XX Success codes
+3XX Redirect codes
+4XX Client error codes
+5XX Server error codes
+
+References:
+restfulapi.net,What is REST?
+halilozel1903,medium,rest ve restful nedir?
+bsrutmn,medium,Rest ve restful servis nedir?
