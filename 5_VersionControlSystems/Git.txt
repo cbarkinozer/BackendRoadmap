@@ -306,13 +306,29 @@ string_operations.c
 [tom@CentOS src]$ git status -s
 
 
+Managing Branches:
+Create Branch:
+[jerry@CentOS src]$ git branch new_branch
 
 
+Switch between Branches:
+[jerry@CentOS src]$ git checkout new_branch
+Switched to branch 'new_branch'
 
 
+Delete Branch:
+[jerry@CentOS src]$ git checkout master
+[jerry@CentOS src]$ git branch -D test_branch
 
-
-
+Rename Branch:
+[jerry@CentOS src]$ git branch -m new_branch wchar_support
+Merge Two Branches:
+[jerry@CentOS src]$ git branch
+master
+* wchar_support
+[jerry@CentOS src]$ pwd
+/home/jerry/jerry_repo/project/src
+[jerry@CentOS src]$ git diff
 
 
 
