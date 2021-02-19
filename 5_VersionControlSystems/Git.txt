@@ -207,23 +207,103 @@ M string.c
 Tom pushes the changes
 [tom@CentOS project]$ git push origin master
 
+Fetch Latest Changes:
+Jerry executes the git pull command to synchronize his local repo with the remote one
+[jerry@CentOs project]$ git pull
+After pull Jerry checks the log and finds the details Toms commit with commit ID cea2c000f53ba99508c5959e3e12fff493ba6f69
+[jerry@CentOS project]$ git log
 
+Now, Jerry’s local repository is fully synchronized with the remote repository. 
+So he can safely push his changes.
+[jerry@CentOS project]$ git push origin master
 
+Stash Operation:
+Suppose you are implementing a new feature for your product. Your code is in progress and suddenly a customer escalation comes.
+Because of this, you have to keep aside your new feature work for a few hours. You cannot commit your partial code and also cannot throw away your changes.
+So you need some temporary space, where you can store your partial changes and later on commit it.
 
+In Git, the stash operation takes your modified tracked files, stages changes, and saves them on a stack of unfinished changes that you can reapply at any time.
 
+[jerry@CentOS project]$ git status -s
+[jerry@CentOS project]$ git stash
+Now, your working directory is clean and all the changes are saved on a stack. Let us verify it with the git status command.
+[jerry@CentOS project]$ git status -s
+Now you can safely switch the branch and work elsewhere. We can view a list of stashed changes by using the git stash list command.
+[jerry@CentOS project]$ git stash list
+[jerry@CentOS project]$ git status -s
+[jerry@CentOS project]$ git stash pop
 
+Move Operation:
+Moves a directory or a file from one location to another. Tom decides to move the source code into src directory.
+[tom@CentOS project]$ pwd
+/home/tom/project
+[tom@CentOS project]$ ls
+README string string.c
+[tom@CentOS project]$ mkdir src
+[tom@CentOS project]$ git mv string.c src/
+[tom@CentOS project]$ git status -s
+R string.c −> src/string.c
+?? string
 
+To make these changes permanent we have to push the modified directory structure to the remote repo so that other devolepers can see.
+[tom@CentOS project]$ git commit -m "Modified directory structure"
+[tom@CentOS project]$ git push origin master
 
+Rename:
+Jerry decides to create Makefile for their project and also give a proper name to the file “string.c”.
+[jerry@CentOS project]$ pwd
+/home/jerry/jerry_repo/project
+[jerry@CentOS project]$ ls
+README src
+[jerry@CentOS project]$ cd src/
+[jerry@CentOS src]$ git add Makefile
+[jerry@CentOS src]$ git mv string.c string_operations.c
+[jerry@CentOS src]$ git status -s
+A Makefile
+R string.c −> string_operations.c
 
+[jerry@CentOS src]$ git commit -a -m 'Added Makefile and renamed strings.c to
+string_operations.c '
 
+After commit, he pushes his changes to the repository.
+[jerry@CentOS src]$ git push origin master
 
+Delete:
 
+VCS is used to store the source code only and not executable binaries.
+So, Tom decides to remove this file from the repository.
+For further operation, he uses the git rm command.
+[tom@CentOS src]$ ls
+Makefile string_operations string_operations.c
+[tom@CentOS src]$ git rm string_operations
+rm 'src/string_operations'
+[tom@CentOS src]$ git commit -a -m "Removed executable binary"
+[tom@CentOS src]$ git push origin master
 
+Fix Mistakes:
+Jerry wants to undo his modification.
+To handle this situation, we can use the git checkout command.
+We can use this command to revert the contents of a file.
 
+[tom@CentOS src]$ pwd
+/home/tom/top_repo/project/src
+[tom@CentOS src]$ ls -1
+Makefile
+string_operations.c
+[tom@CentOS src]$ rm string_operations.c
+[tom@CentOS src]$ ls -1
+Makefile
+[tom@CentOS src]$ git status -s
+D string_operations.c
 
+Git is showing the letter D before the filename.
+This indicates that the file has been deleted from the local repository.
 
-
-
+[tom@CentOS src]$ git checkout string_operations.c
+[tom@CentOS src]$ ls -1
+Makefile
+string_operations.c
+[tom@CentOS src]$ git status -s
 
 
 
