@@ -3,6 +3,14 @@ Version control systems allows you to revert files back to a previous state, rev
 review changes made over time see who last modified smth that might be causing a problem, who introduced an issue and when and more.
 Git is a version control system for tracking changes in computer files and coordinating work on those files multiple people.
 Every user clones a copy of a repository(collection of files) ad has the full history of the project on their own hard drive.
+Adv:
+Free and open source
+Fast and small
+Implicit backup: Losing data chace is very rare.
+Security: Git uses common cryptographic hash function called secure hash function.
+No need of powerful hardware
+Easier branching : Simple takes only few seconds.
+
 
 Repository:
 As known as repo is nothing but a collection of source code.
@@ -12,6 +20,8 @@ If you consider a file in your Working Directory it can be in three possible sta
 It can be staged. Which means the files with the update changes are marked to be commited to the local repository but not yet comitted.
 It can be modified. Which means the files with the updated changes are not yet stored in the local reposityor.
 It can be commited. Which means that the changes you made to your file are safely stored in the local reposity.
+
+
 git add: add a file that is in the working directory to the staging area.
 git commit: add all files that are staged to the local repository.
 git push: add all comitted files in the local repository to the remote repository. So in remote repo all files and changes will be visible
@@ -20,5 +30,215 @@ git fetch: get files from the remote repo to the local repo but not in the worki
 git merge get the files from the local repo into the working directory.
 git pull get files from the remote repo directly into the working directory. Equivalent toa git fetch and a gi merge.
 
+
+
+Blobs: Binary Large Obejct. A blob holds the file data. Files are not addressed by names everything is content addressed.
+Trees: Tree is an obj which represents a directoru. It holds blobs.
+Commits: Current state of the repo. Consider as linked list. Every commit obj has a pointer to parent commit obj.
+Branches: Used to create another line of development. Git has main branch. Once feature completed it is merged back with main branch and delete the update branch.
+Tags: Meaningful name with a specific vrsion in repo. Tags are similar to branches but tags are immutable.
+Clone: Creates the instance of the repo. Checks out working copy also mirrors the complete repo.
+Pull: Copies the changes from a remote repo instance to a local one.
+Push: Copies changes from a local repo instance to a remote one.
+HEAD: Pointer which always points to the latest commint in the branch. Whenever you make a commit HEAD is updated with the latest commit.
+Revision: Version of the source code. Revisions in Git represented by commits.
+URL: Represents the location of the Git repository. Stored in config file.
+
+Customizing Git Environment:
+Git provides the git config tool, which allows you to set configuration variables.
+Git stores all global configurations in .gitconfig file, which is located in your home directory.
+To set these configuration values as global, add the --global option, and if you omit --global option, 
+then your configurations are specific for the current Git repository.
+
+Setting username:
+Info used by Git for each commit.
+[jerry@CentOS project]$ git config --global user.name "Jerry Mouse"
+
+Setting email id:
+Info used by Git for each commit.
+[jerry@CentOS project]$ git config --global user.email "jerry@tutorialspoint.com"
+
+Avoid merge commits for pulling:
+You pull the latest changes from a remote repo and if these changes are divergent then by default Git creates merge commits.
+We can avoid this via following settings.
+[jerry@CentOS project]$ git config --global branch.autosetuprebase always
+
+Color highlighting:
+Enables color highlighting for Git in the console.
+[jerry@CentOS project]$ git config --global color.ui true
+
+Setting default editor:
+By default Git uses the system default editor which is taken from the VISUAL or EDITOR environment variable.
+We can configure a different one by using git config.,
+[jerry@CentOS project]$git config --gloabl core.edtor vim
+
+Setting default merge tool:
+Git does not provide a default merge tool for integrating conflicting changes into your working tree.
+[jerry@CentOS project]$git config --global merge.tool vimdiff
+
+Listing Git settings:
+To verify your Git settings of the local repo use git config -şist command as given below.
+[jerry@CentOS ~]$ git config --list
+The output will be:
+user.name=Jerry Mouse
+user.email=jerry@tutorialspoint.com
+push.default=nothing
+branch.autosetuprebase=always
+color.ui=true
+color.status=auto
+color.branch=auto
+core.editor=vim
+merge.tool=vimdiff
+
+Git life cycle:
+You clone the Git repo as working copy.
+You modify the working copy by adding editing files
+If necessary you also update the working copy by taking other developers changes
+You review the changes before commit
+You commit changes if everything is fine then you push the changes to the repo
+After commiting if you realize smth is wrong then you correct the last commit and push the changes to the repo.
+
+
+Create new user:
+#add new group
+[jerry@CentOS ~]# groupadd dev
+#add new user
+[jerry@CentOS ~]# userad -G devs -d /home/gituser -m -s /bin/bash gituser
+#changepassword
+[jerry@CentOS ~]# passwd gituser
+
+Creating bare repo
+Initialize new repo by using init command follow by --bare option. By convention bare repo must named .git
+[jerry@CentOS ~]$ pwd
+[jerry@CentOS ~]$ mkdir project.git
+[jerry@CentOS ~]$ cd project.git/
+[jerry@CentOS project.git]$ ls
+[jerry@CentOS project.git]$ ls
+[jerry@CentOS project.git]$ git --bare init
+
+Generate Public/Private RSA Key Pair:
+[tom@CentOs ~]$ pwd
+[tom@CentOs ~]$ ssh-keygen
+ssh-keygen generates two keys first one is private and second one is public
+NOTE!: Never share PRIVATE KEY.
+
+Suppose there are two developers working on project both users have generated public keys for authentication
+Tom added his public key to the server by using ssh-copy-id command as given below
+[tom@CentOs ~]$ pwd
+[tom@CentOs ~]$ ssh-copy-id -i ~/.ssh/id_rsa.pub gituser@git.server.com 
+Jerry does the same:
+[jerry@CentOs ~]$ pwd
+[jerry@CentOs ~]$ ssh-copy-id -i ~/.ssh/id_rsa gituser@git.server.com
+
+We have created a bare repo on server and allowed access for two users.
+From now on Tom and Jerry can push changes to the repo by adding it as remote
+
+[tom@CentOS ~]$ pwd
+[tom@CentOS ~]$ mkdir tom_repo
+[tom@CentOS ~]$ cd tom_repo/
+[tom@CentOS tom_repo]$ git init
+[tom@CentOS tom_repo]$ echo 'TODO: Add contents for README' > README
+[tom@CentOS tom_repo]$ git status -s
+[tom@CentOS tom_repo]$ git add .
+[tom@CentOS tom_repo]$ git status -s
+[tom@CentOS tom_repo]$ git commit -m 'Initial commit'
+
+Clone operation:
+creates an instance of the remote repo
+[jerry@CentOS ~]$ mkdir jerry_repo
+[jerry@CentOS ~]$ cd jerry_repo/
+[jerry@CentOS jerry_repo]$ git clone gituser@git.server.com:project.git
+
+Perform Changes:
+[jerry@CentOS project]$ git status -s
+output:
+?? string
+?? string.c
+[jerry@CentOS project]$ git add string.c
+
+Git is showing a question mark before file names. Obviously, these files are not a part of Git,
+and that is why Git does not know what to do with these files
+To commit changes:
+[jerry@CentOS project]$ git commit -m 'Implemented my_strlen function'
+He wants to change file and for that he wants to see log so:
+
+[jerry@CentOS project]$ git log
+commit cbe1249b140dad24b2c35b15cc7e26a6f02d2277
+Author: Jerry Mouse <jerry@tutorialspoint.com>
+Date: Wed Sep 11 08:05:26 2013 +0530
+Implemented my_strlen function
+Jerry wants to  review his changes
+[jerry@CentOS project]$ git show cbe1249b140dad24b2c35b15cc7e26a6f02d2277
+
+After changing the file, he views his changes by running git diff command:
+[jerry@CentOS project]$ git diff
+
+He is happy with the result so he pushes his changes:
+[jerry@CentOS project]$ git push origin master
+
+Update Option:
+om performs the clone operation and finds a new file string.c.
+He wants to know who added this file to the repository and for what purpose, so, he executes the git log command.
+
+[tom@CentOS ~]$ git clone gituser@git.server.com:project.git
+
+The Clone operation will create a new directory inside the current working directory.
+He changes the directory to newly created directory and executes the git log command.
+
+[tom@CentOS project]$ git log
+
+After observing the log, he realizes that the file string.c was added by Jerry to implement basic string operations.
+He is curious about Jerry’s code. So he opens string.c in text editor and immediately finds a bug.
+In my_strlen function, Jerry is not using a constant pointer.
+So, he decides to modify Jerry’s code. After modification, the code looks as follows −
+
+[tom@CentOS project]$ git diff
+After testing the code and be sure that he did not break anything :) he commits.
+[tom@CentOS project]$ git status -s
+M string.c
+?? string
+
+[tom@CentOS project]$ git add string.c
+[tom@CentOS project]$ git commit -m 'Changed char pointer to const char pointer'
+[master cea2c00] Changed char pointer to const char pointer
+1 files changed, 2 insertions(+), 2 deletions(-)
+[tom@CentOS project]$ git log
+
+Tom pushes the changes
+[tom@CentOS project]$ git push origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 References:
 freecodecamp,Learn the basics of git under 10 min
+tutorialspoint,git Tutorial
