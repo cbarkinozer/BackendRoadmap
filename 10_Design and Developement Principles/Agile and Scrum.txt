@@ -1,0 +1,47 @@
+++Agile and Scrum
+What is agile?
+Set of values and principles
+
+How to be agile:
+Making decisions based on Agile values and principles
+
+Agile Values and Principles:
+Values:
+Individuals and interactions 	> 	Process and tools
+Working software 		> 	Comprehensive documentation
+Customer collaboration 		> 	Cotract negotation
+Responding to change 		> 	Following a plan
+
+Principles:
+1_Highest priority is to satisfy the customer through early and continous delivery of valuable software.
+2_Welcome changing requirements,even late in developement.Agile harness change for the customer's competitive.
+3_Deliver workig software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
+4_Business people and developers must work together daily throughout the project.
+5_Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+6_The most efficient and effective method of conveying information to and within a developement team is face-to-face conversation.
+7_Working software is the primary measure of progress.
+8_Agile processes promote sustainable developement. The sensors,developers and users should be able to maintain a constant pace indefinitely.
+9_Continuous attention to technical excellence and good design enhances agility.
+10_Simplicity- the art of maximizing the amount of work not done- is essential.
+11_The best architectures, requirements, and designs emerge grom self-organizing teams.
+12_At regular intervals, the team reflects o how to become more effective, then tunes and adjusts its behavior accordingly.
+
+
+Scrum Developement Methodolgy:
+You can use waterfall method.
+You can Plan 4x >Build 4x >Test 4x >Review 4x.
+
+In scrum there are multiple sprints.
+Sprint is each plan>build>test>review cycle.
+
+Sprint1: 1x >Build 1x >Test 1x >Review 1x.
+Sprint2: 1x >Build 1x >Test 1x >Review 1x.
+Sprint3: 1x >Build 1x >Test 1x >Review 1x.
+Sprint4: 1x >Build 1x >Test 1x >Review 1x.
+
+Team members:
+
+Product Owner : Decides what features should included(like idea finder).
+Scrum master : Keeps the cycles going.
+Team member: Who does the work at the sprint.
+It is a more agile process.
