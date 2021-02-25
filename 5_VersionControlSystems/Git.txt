@@ -98,7 +98,7 @@ You review the changes before commit
 You commit changes if everything is fine then you push the changes to the repo
 After commiting if you realize smth is wrong then you correct the last commit and push the changes to the repo.
 
-
+Example:
 Create new user:
 #add new group
 [jerry@CentOS ~]# groupadd dev
@@ -330,6 +330,97 @@ master
 /home/jerry/jerry_repo/project/src
 [jerry@CentOS src]$ git diff
 
+Detailed Explanations:
+
+Git models the history of a collection of files and folders within some top-level directory as a series of snapshots.
+In Git terminology, a file is called a “blob”, and it’s just a bunch of bytes.
+A directory is called a “tree”, and it maps names to blobs or trees (so directories can contain other directories).
+A snapshot is the top-level tree that is being tracked
+
+Gits DataModel as pseudocode:
+// a file is a bunch of bytes
+type blob = array<byte>
+
+// a directory contains named files and directories
+type tree = map<string, tree | blob>
+
+// a commit has parents, metadata, and the top-level tree
+type commit = struct {
+    parent: array<commit>
+    author: string
+    message: string
+    snapshot: tree
+}
+
+An “object” is a blob, tree, or commit:
+type object = blob | tree | commit
+
+
+In Git data store, all objects are content-addressed by their SHA-1 hash.
+objects = map<string, object>
+
+def store(object):
+    id = sha1(object)
+    objects[id] = object
+
+def load(id):
+    return objects[id]
+
+References:
+Now, all snapshots can be identified by their SHA-1 hash. That’s inconvenient, because humans aren’t good at remembering strings of 40 hexadecimal characters.
+Git’s solution to this problem is human-readable names for SHA-1 hashes, called “references”.
+References are pointers to commits. Unlike objects, which are immutable, references are mutable (can be updated to point to a new commit).
+For example, the master reference usually points to the latest commit in the main branch of development.
+
+Git commands:
+
+Basics:
+git help <command>: get help for a git command
+git init: creates a new git repo, with data stored in the .git directory
+git status: tells you what’s going on
+git add <filename>: adds files to staging area
+git commit: creates a new commit
+Write good commit messages!
+git log: shows a flattened log of history
+git log --all --graph --decorate: visualizes history as a DAG
+git diff <filename>: show changes you made relative to the staging area
+git diff <revision> <filename>: shows differences in a file between snapshots
+git checkout <revision>: updates HEAD and current branch
+
+Branching and merging
+git branch: shows branches
+git branch <name>: creates a branch
+git checkout -b <name>: creates a branch and switches to it
+same as git branch <name>; git checkout <name>
+git merge <revision>: merges into current branch
+git mergetool: use a fancy tool to help resolve merge conflicts
+git rebase: rebase set of patches onto a new base
+
+Remotes
+git remote: list remotes
+git remote add <name> <url>: add a remote
+git push <remote> <local branch>:<remote branch>: send objects to remote, and update remote reference
+git branch --set-upstream-to=<remote>/<remote branch>: set up correspondence between local and remote branch
+git fetch: retrieve objects/references from a remote
+git pull: same as git fetch; git merge
+git clone: download repository from remote
+
+Undo
+git commit --amend: edit a commit’s contents/message
+git reset HEAD <file>: unstage a file
+git checkout -- <file>: discard changes
+
+Advanced Git
+git config: Git is highly customizable
+git clone --depth=1: shallow clone, without entire version history
+git add -p: interactive staging
+git rebase -i: interactive rebasing
+git blame: show who last edited which line
+git stash: temporarily remove modifications to working directory
+git bisect: binary search history (e.g. for regressions)
+.gitignore: specify intentionally untracked files to ignore
+
+
 
 
 
@@ -338,3 +429,4 @@ master
 References:
 freecodecamp,Learn the basics of git under 10 min
 tutorialspoint,git Tutorial
+missingsemester,version control
