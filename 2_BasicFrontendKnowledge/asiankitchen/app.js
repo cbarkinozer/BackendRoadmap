@@ -19,7 +19,7 @@ const menu = [
   },
   {
     id: 3,
-    title: "DWELL Bibimap",
+    title: "Bibiş map",
     category: "Korea",
     price: 8.99,
     img:
