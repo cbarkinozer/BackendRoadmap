@@ -25,7 +25,12 @@ function addTodo(){
   }
   var liElement = document.createElement('LI'); //Create li element
   liElement.textContent = userInput; //its text is the user input
+  liElement.addEventListener('click',removeTodo);
   ulElement.appendChild(liElement); //add li to ul
+}
 
+function removeTodo(event){
+var clickedLi = event.target;
+clickedLi.parentNode.removeChild(clickedLi);
 }
 ```
