@@ -1,0 +1,13 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+	<p v-bind:class="{updated:name=='Max'?false:true}">{{ name }}</p>
+	<p v-if="name ='Max'?false:true">Name updated!</p>
+	<button v-on:click="changeName">Change Name</button>
+	<button v-on:click="addElement">Add a new Element</button>
+	<ul>
+		<li v-for="element in elements"
+				v-bind:id="'el'+element"
+				v-bind:style="{backgroundColor:getColor(element)}"> Element {{ element }}</li>
+	</ul>
+
+</div>
