@@ -1,5 +1,3 @@
-import * as Vue from "https://cdn.skypack.dev/vue";
-
 new Vue({
   el: '#app',
   data: {
