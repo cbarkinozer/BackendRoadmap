@@ -142,6 +142,10 @@ console.log('30 Days Of JavaScript'.repeat(2));//30 Days Of JavaScript30 Days Of
     ```sh
     The quote 'There is no exercise better for the heart than reaching down and lifting people up.' by John Holmes teaches us to help one another.
     ```
+    
+```js
+console.log("The quote 'There is no exercise better for the heart than reaching down and lifting people up.' by John Holmes teaches us to help one another.");
+```
 
 2. Using console.log() print out the following quote by Mother Teresa:
 
@@ -149,16 +153,46 @@ console.log('30 Days Of JavaScript'.repeat(2));//30 Days Of JavaScript30 Days Of
     "Love is not patronizing and charity isn't about pity, it is about love. Charity and love are the same -- with charity you give love, so don't just give money but reach out your hand instead."
     ```
 
+```js
+console.log("Love is not patronizing and charity isn't about pity, it is about love. Charity and love are the same -- with charity you give love, so don't just give money but reach out your hand instead.");
+```
 3. Check if typeof '10' is exactly equal to 10. If not make it exactly equal.
+```js
+console.log(typeof '10' == 10); //false
+console.log(parseInt('10') == 10); //true
+```
 4. Check if parseFloat('9.8') is equal to 10 if not make it exactly equal with 10.
+```js
+console.log(parseFloat('9.8') == 10); //false
+console.log(Math.ceil(parseFloat('9.8')) == 10); //true
+```
 5. Check if 'on' is found in both python and jargon
+```js
+console.log("python".includes('on')); //true
+console.log("jargon".includes('on')); //true
+```
 6. _I hope this course is not full of jargon_. Check if _jargon_ is in the sentence.
+```js
+console.log("I hope this course is not full of jargon. Check if jargon is in the sentence".includes('jargon')); //true
+```
 7. Generate a random number between 0 and 100 inclusively.
+```js
+console.log(Math.floor(Math.random()*101)); //0-100
+```
 8. Generate a random number between 50 and 100 inclusively.
+```js
+console.log(Math.floor(50+Math.random()*51)); //50-100
+```
 9. Generate a random number between 0 and 255 inclusively.
+```js
+console.log(Math.floor(Math.random()*251)); //0-250
+```
 10. Access the 'JavaScript' string characters using a random number.
+```js
+let string="JavaScript";
+console.log(string[Math.floor(Math.random()*10)]);
+```
 11. Use console.log() and escape characters to print the following pattern.
-
     ```js
     1 1 1 1 1
     2 1 2 4 8
@@ -167,16 +201,42 @@ console.log('30 Days Of JavaScript'.repeat(2));//30 Days Of JavaScript30 Days Of
     5 1 5 25 125
     ```
 
+```js
+for(let i=1;i<6;i++){
+    console.log('%d %d %d %d %d',i, i**0, i**1, i**2, i**3);
+}
+```
 12.  Use __substr__ to slice out the phrase __because because because__ from the following sentence:__'You cannot end a sentence with because because because is a conjunction'__
+
+```js
+let str ="You cannot end a sentence with because because because is a conjunction";
+console.log(str.substr(0,30));
+console.log(str.substr(55));
+```
 
 ### Exercises: Level 3
 
 1. 'Love is the best thing in this world. Some found their love and some are still looking for their love.' Count the number of word __love__ in this sentence.
+```js
+    let str ='Love is the best thing in this world. Some found their love and some are still looking for their love.';
+    console.log(str.match(/love/gi).length);//3
+```
 2. Use __match()__ to count the number of all __because__ in the following sentence:__'You cannot end a sentence with because because because is a conjunction'__
+```js
+    let str ='You cannot end a sentence with because because because is a conjunction';
+    console.log(str.match(/because/gi).length);//3
+```
 3. Clean the following text and find the most frequent word (hint, use replace and regular expressions).
 
     ```js
         const sentence = '%I $am@% a %tea@cher%, &and& I lo%#ve %te@a@ching%;. The@re $is no@th@ing; &as& mo@re rewarding as educa@ting &and& @emp%o@weri@ng peo@ple. ;I found tea@ching m%o@re interesting tha@n any ot#her %jo@bs. %Do@es thi%s mo@tiv#ate yo@u to be a tea@cher!? %Th#is 30#Days&OfJavaScript &is al@so $the $resu@lt of &love& of tea&ching'
     ```
 
+```js
+    const sentence = 'I am a teacher, and I love teaching;. There is nothing; as more rewarding as educating and empowering people. ;I found teaching more interesting than any other jobs. Does this motivate you to be a teacher!? This 30DaysOfJavaScript is also the result of love of teaching';
+```
 4. Calculate the total annual income of the person by extracting the numbers from the following text. 'He earns 5000 euro from salary per month, 10000 euro annual bonus, 15000 euro online courses per month.'
+
+```js
+    
+```
