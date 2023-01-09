@@ -221,24 +221,22 @@ if(name.length>7){
 ```js
 //easy question passed
 ```
-1. Write a script that prompt the user to enter number of years. Calculate the number of seconds a person can live. Assume some one lives just 80 years
+1. Write a script that prompt the user to enter number of years. Calculate the number of seconds a person remained to live. Assume some one lives just 80 years
 
    ```sh
-   Enter number of years you live: 100
-   You lived 3153600000 seconds.
+   You remained life as seconds: 3153600000
    ```
 
 ```js
-let age = prompt('Enter your age:', 'your age:');
+let now = new Date();
 
-let remainingTime= 31556926*(80-age);
+let remainingTime= ((80- (age-1)) *  31556926) - ((now.getMonth()+1)*2629743.83 + now.getDate*86400 + now.getHours()*3600 + now.getMinutes()*60 );
 
 console.log("You can live maximum this amount of seconds:");
 
 while(remainingTime>0){
     console.log(remainingTime);
     new Promise(resolve => setTimeout(resolve, 1000));
-    remainingTime--;
 }
 ```
 1. Create a human readable time format using the Date time object
