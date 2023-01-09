@@ -1,4 +1,3 @@
-### 30 Days Of Javascript Solutions
 ## Day 2
 
 ### Exercise: Level 1
