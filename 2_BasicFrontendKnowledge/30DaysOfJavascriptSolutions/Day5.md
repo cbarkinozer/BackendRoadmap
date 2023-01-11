@@ -163,8 +163,7 @@ const webTechs = [
     const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
     ```
 
-```js
-```
+
     - Sort the array and find the min and max age
     ```js
     ```
@@ -187,3 +186,5 @@ const webTechs = [
 ```js
 ```
 2. Divide the countries array into two equal arrays if it is even.  If countries array is not even , one more country for the first half.
+```js
+```
