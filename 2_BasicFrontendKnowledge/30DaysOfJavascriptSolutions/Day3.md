@@ -244,10 +244,43 @@ while(remainingTime>0){
    2. DD-MM-YYYY HH:mm
    3. DD/MM/YYYY HH:mm
 
+```js
+const now = new Date()
+const year = now.getFullYear() // return year
+const month = now.getMonth() + 1 // return month(0 - 11)
+const date = now.getDate() // return date (1 - 31)
+const hours = now.getHours() // return number (0 - 23)
+const minutes = now.getMinutes() // return number (0 -59)
+
+console.log(`${year}-${month}-${date} ${hours}:${minutes}`) // 2023-1-11 6:41
+console.log(`${date}-${month}-${year} ${hours}:${minutes}`) // 11-1-2023 6:41
+console.log(`${date}/${month}/${year} ${hours}:${minutes}`) // 11/1/2023 6:41
+```
+
 ### Exercises: Level 3
 
 1. Create a human readable time format using the Date time object. The hour and the minute should be all the time two digits(7 hours should be 07 and 5 minutes should be 05 )
    1. YYY-MM-DD HH:mm eg. 20120-01-02 07:05
 ```js
+let now = new Date()
+let year = now.getFullYear() // return year
+let month = now.getMonth() + 1 // return month(0 - 11)
+let date = now.getDate() // return date (1 - 31)
+let hours = now.getHours() // return number (0 - 23)
+let minutes = now.getMinutes() // return number (0 -59)
 
+if(month<10){
+    month = '0' + month;
+}
+if(date<10){
+    date = '0' + date;
+}
+if(hours<10){
+    hours = '0' + hours;
+}
+if(minutes<10){
+    minutes = '0' + minutes;
+}
+
+console.log(`${year}-${month}-${date} ${hours}:${minutes}`) // 2023-01-11 06:45
 ```
