@@ -27,15 +27,21 @@ const webTechs = [
 
 1. Declare an _empty_ array;
 ```js
+const arr = Array()
 ```
 3. Declare an array with more than 5 number of elements
 ```js
+const arr = Array(6)
 ```
 4. Find the length of your array
 ```js
+const arr = Array(6)
+console.log(arr.length);//6
 ```
 5. Get the first item, the middle item and the last item of the array
 ```js
+const arr = [1,2,3,4,5,6]
+console.log(arr[0],arr[arr.length/2],arr[arr.length-1]);//1 4 6
 ```
 6. Declare an array called _mixedDataTypes_, put different data types in the array and find the length of the array. The array size should  be greater than 5
 ```js
