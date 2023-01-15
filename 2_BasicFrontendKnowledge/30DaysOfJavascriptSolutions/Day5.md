@@ -122,36 +122,96 @@ Facebook,Google,Microsoft,Apple,IBM,Oracle,Amazon are big IT companies.
 ```
 14. Check if a certain company exists in the itCompanies array. If it exist return the company else return a company is _not found_
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"]
+
+let index = itCompanies.indexOf("Oracle");
+
+if(index == -1){
+    console.log("company is not found.");
+}else{
+    console.log(itCompanies[index]);
+}
 ```
 15. Filter out companies which have more than one 'o' without the filter method
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+
+const selectedCompanies=[];
+
+for(company of itCompanies){
+    
+    let index = company.indexOf('oo');
+    
+    if(index != -1){
+        selectedCompanies.push(company);
+    }
+}
+console.log(selectedCompanies.toString());//Facebook,Google
 ```
 16. Sort the array using _sort()_ method
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+
+console.log(itCompanies.sort().toString());
+//Amazon,Apple,Facebook,Google,IBM,Microsoft,Oracle
 ```
 17. Reverse the array using _reverse()_ method
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+
+console.log(itCompanies.reverse().toString());
+//Amazon,Oracle,IBM,Apple,Microsoft,Google,Facebook
 ```
 18. Slice out the first 3 companies from the array
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+itCompanies.splice(0,3);
+console.log(itCompanies);
+//[ 'Apple', 'IBM', 'Oracle', 'Amazon' ]
 ```
 19. Slice out the last 3 companies from the array
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+itCompanies.splice(itCompanies.length-3,itCompanies.length-1);
+console.log(itCompanies);
+//[ 'Facebook', 'Google', 'Microsoft', 'Apple' ]
 ```
 20. Slice out the middle IT company or companies from the array
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+itCompanies.splice(1,itCompanies.length-2);
+console.log(itCompanies);
+//[ 'Facebook', 'Amazon' ]
 ```
 21. Remove the first IT company from the array
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+itCompanies.shift()
+console.log(itCompanies);
+//[ 'Google', 'Microsoft', 'Apple', 'IBM', 'Oracle', 'Amazon' ]
 ```
 22. Remove the middle IT company or companies from the array
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+const resultCompanies =[];
+resultCompanies.push(itCompanies[0]);
+resultCompanies.push(itCompanies[itCompanies.length-1]);
+console.log(resultCompanies);
+//[ 'Facebook', 'Amazon' ]
 ```
 23. Remove the last IT company from the array
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+itCompanies.pop();
+console.log(itCompanies);
+//[ 'Facebook', 'Google', 'Microsoft', 'Apple', 'IBM', 'Oracle' ]
 ```
 24. Remove all IT companies
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"];
+itCompanies.length=0;
+console.log(itCompanies);
+//[]
 ```
 
 ### Exercise: Level 2
