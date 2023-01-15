@@ -45,27 +45,80 @@ console.log(arr[0],arr[arr.length/2],arr[arr.length-1]);//1 4 6
 ```
 6. Declare an array called _mixedDataTypes_, put different data types in the array and find the length of the array. The array size should  be greater than 5
 ```js
+const mixedDataTypes = [1,'2',true,"foo",5,6]
+console.log(mixedDataTypes.length);//6
 ```
 7. Declare an array variable name itCompanies and assign initial values Facebook, Google, Microsoft, Apple, IBM, Oracle and Amazon
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"]
 ```
 8. Print the array using _console.log()_
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"]
+console.log(itCompanies);
+/*
+[
+  'Facebook',
+  'Google',
+  'Microsoft',
+  'Apple',
+  'IBM',
+  'Oracle',
+  'Amazon'
+]
+*/
 ```
 9. Print the number of companies in the array
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"]
+console.log(itCompanies.length);//7
 ```
 10. Print the first company, middle and last company
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"]
+console.log(itCompanies[0],itCompanies[(itCompanies.length-1)/2],itCompanies[itCompanies.length-1]);//Facebook Apple Amazon
 ``
 11. Print out each company
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"]
+for(company of itCompanies){
+    console.log(company);
+}
+/*
+Facebook
+Google
+Microsoft
+Apple
+IBM
+Oracle
+Amazon
+*/
+
 ```
 12. Change each company name  to uppercase one by one and print them out
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"]
+for(i in itCompanies){
+    itCompanies[i] = itCompanies[i].toUpperCase();
+    console.log(itCompanies[i]);
+}
+/*
+FACEBOOK
+GOOGLE
+MICROSOFT
+APPLE
+IBM
+ORACLE
+AMAZON
+*/
 ```
 13. Print the array like as a sentence: Facebook, Google, Microsoft, Apple, IBM,Oracle and Amazon are big IT companies.
 ```js
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle","Amazon"]
+console.log(itCompanies.toString()+" are big IT companies.")
+/*
+Facebook,Google,Microsoft,Apple,IBM,Oracle,Amazon are big IT companies.
+*/
 ```
 14. Check if a certain company exists in the itCompanies array. If it exist return the company else return a company is _not found_
 ```js
