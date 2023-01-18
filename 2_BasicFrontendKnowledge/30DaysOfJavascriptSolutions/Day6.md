@@ -1,3 +1,5 @@
+//Passed because easy
+
 ### Exercises: Level 1
 
   ```js
