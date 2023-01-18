@@ -333,25 +333,68 @@ console.log(fullStack)
 
     - Sort the array and find the min and max age
     ```js
+    const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24];
+    ages.sort();
+    console.log("Max age: ",ages[0]); //19
+    console.log("Min age: ",ages[ages.length-1]);//26
     ```
     - Find the median age(one middle item or two middle items divided by two)
     ```js
+    let length = ages.length;
+    if(length%2===0){
+    console.log((ages[length/2]+ages[length/2+1])/2);
+    }else{
+    console.log(ages[length-1/2]);
+    }
+    //24
     ```
     - Find the average age(all items divided by number of items)
     ```js
+    let sum =0;
+    for(age of ages){
+      sum += age;
+    }
+    console.log(sum/ages.length-1); //21.8
     ```
     - Find the range of the ages(max minus min)
     ```js
+    const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24];
+    ages.sort();
+    console.log("Range: ",ages[ages.length-1] - ages[0]); //7
     ```
     - Compare the value of (min - average) and (max - average), use _abs()_ method
     ```js
+    const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24];
+    ages.sort();
+    let sum =0;
+    for(age of ages){
+      sum += age;
+    }
+    console.log(Math.abs(ages[0] - sum/ages.length-1));
     ```
 1.Slice the first ten countries from the [countries array](https://github.com/Asabeneh/30DaysOfJavaScript/tree/master/data/countries.js)
 ```js
+console.log(countries.slice(0,11));
 ```
 1. Find the middle country(ies) in the [countries array](https://github.com/Asabeneh/30DaysOfJavaScript/tree/master/data/countries.js)
 ```js
+let length = countries.length;
+    if(length%2===0){
+    console.log((ages[length/2]+" "+ages[length/2+1]));
+    }else{
+    console.log(ages[length-1/2]);
+    }
 ```
 2. Divide the countries array into two equal arrays if it is even.  If countries array is not even , one more country for the first half.
 ```js
+let length = countries.length;
+let firstHalf = [];
+let secondHalf = [];
+    if(length%2===0){
+    firstHalf = countries.slice(0,length/2);
+    secondHalf = countries.slice(length/2, length-1);
+    }else{
+    firstHalf = countries.slice(0,(length/2)+1);
+    secondHalf = countries.slice((length/2)-1, length-1);
+    }
 ```
