@@ -218,6 +218,13 @@ console.log(itCompanies);
 
 1. Create a separate countries.js file and store the countries array in to this file, create a separate file web_techs.js and store the webTechs array in to this file. Access both file in main.js file
 ```js
+<script src="./data/countries.js"></script>
+<script src="./scripts/main.js"></script>
+
+//or
+
+import './data/countries.js';
+import './scripts/main.js';
 ```
 1. First remove all the punctuations and change the string to array and count the number of words in the array
 
@@ -234,6 +241,13 @@ console.log(itCompanies);
     13
     ```
 ```js
+let text =
+    'I love teaching and empowering people. I teach HTML, CSS, JS, React, Python.';
+    text = text.replace(',','');
+    text = text.replace('.',''); 
+    let arr =[];
+    arr = text.split(' ');
+    console.log(arr.length); //13
 ```
 
 1. In the following shopping cart add, remove, edit items
@@ -244,21 +258,51 @@ console.log(itCompanies);
 
    - add 'Meat' in the beginning of your shopping cart if it has not been already added
    ```js
+   if(shoppingCart[0] !== 'Meat'){
+      shoppingCart.unshift('Meat');
+   }
    ```
    - add Sugar at the end of you shopping cart if it has not been already added
    ```js
+   if(shoppingCart[shoppingCart.length-1] !== 'Sugar'){
+      shoppingCart.push('Sugar');
+    }
    ```
    - remove 'Honey' if you are allergic to honey
    ```js
+    const isAllergicToHoney = true;
+    if(isAllergicToHoney){
+      var index = shoppingCart.indexOf('Honey');
+      if (index !== -1) {
+        shoppingCart.splice(index, 1);
+      }
+    }
    ```
    - modify Tea to 'Green Tea'
    ```js
+    let index = shoppingCart.indexOf('Tea');
+      if (index !== -1) {
+        shoppingCart[index] = 'Grean Tea';
+      }
    ```
 1. In countries array check if 'Ethiopia' exists in the array if it exists print 'ETHIOPIA'. If it does not exist add to the countries list.
 ```js
+let index = countries.indexOf('Ethiopia');
+      if (index !== -1) {
+        console.log("ETHIOPIA");
+      }else{
+        countries.push('Ethiopia');
+      }
 ```
 1. In the webTechs array check if Sass exists in the array  and if it exists print 'Sass is a CSS preprocess'. If it does not exist add Sass to the array and print the array.
 ```js
+let index = countries.indexOf('Sass');
+      if (index !== -1) {
+        console.log("Sass is a CSS preprocess.");
+      }else{
+        countries.push('Sass');
+        console.log(webTechs);
+      }
 ```
 1. Concatenate the following two variables and store it in a fullStack variable.
 
@@ -273,6 +317,10 @@ console.log(itCompanies);
     ["HTML", "CSS", "JS", "React", "Redux", "Node", "Express", "MongoDB"]
     ```
 ```js
+const frontEnd = ['HTML', 'CSS', 'JS', 'React', 'Redux'];
+const backEnd = ['Node','Express', 'MongoDB'];
+const fullStack = frontEnd.concat(backEnd);  
+console.log(fullStack)
 ```
 ### Exercise: Level 3
 
