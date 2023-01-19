@@ -111,7 +111,65 @@ console.log(volumeOfRectPrism(1,2,3));
     ```
 
 ```js
-//TODO
+function solveQuadratic(...args){
+    let length = args.length;
+    if(length === 0){
+        return "The root of  thequadratic equation is "+0;
+    }else if(length ===3){
+        let a = args[0];
+        let b = args[1];
+        let c = args[2];
+        
+        let root1 =0;
+        let root2=0;
+        
+        let discriminant = b * b - 4 * a * c;
+        if (discriminant > 0) {
+    root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+    root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+
+    // result
+    return`The roots of quadratic equation are ${root1} and ${root2}`;
+}
+
+// condition for real and equal roots
+else if (discriminant == 0) {
+    root1 = root2 = -b / (2 * a);
+
+    // result
+    return`The roots of quadratic equation are ${root1} and ${root2}`;
+}
+
+// if roots are not real
+else {
+    let realPart = (-b / (2 * a)).toFixed(2);
+    let imagPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+
+    // result
+    return
+    `The roots of quadratic equation are ${realPart} + ${imagPart}i and ${realPart} - ${imagPart}i`
+}
+    }else{
+        return null;
+    }
+}
+
+console.log(solveQuadratic()) // {0}
+console.log(solveQuadratic(1, 4, 4)) // {-2}
+console.log(solveQuadratic(1, -1, -2)) // {2, -1}
+console.log(solveQuadratic(1, 7, 12)) // {-3, -4}
+console.log(solveQuadratic(1, 0, -4)) //{2, -2}
+console.log(solveQuadratic(1, -1, 0)) //{1, 0}
+
+/*
+The root of  thequadratic equation is 0
+The roots of quadratic equation are -2 and -2
+The roots of quadratic equation are 2 and -1
+The roots of quadratic equation are -3 and -4
+The roots of quadratic equation are 2 and -2
+The roots of quadratic equation are 1 and 0
+*/
+
 ```
 1. Declare a function name _printArray_. It takes array as a parameter and it prints out each value of the array.
 ```js
@@ -132,7 +190,33 @@ printArray(arr);
     ```
 
 ```js
-//TODO
+function showDateTime(){
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth()+1;
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    
+    
+    
+    if(month<10){
+        month = '0'+month;
+    }
+    if(day<10){
+        day = '0'+day;
+    }
+    if(hour<10){
+        hour = '0'+hour;
+    }
+    if(minute<10){
+        minute = '0'+minute;
+    }
+    
+    return month+'/'+day+'/'+year+' '+hour+':'+minute;
+}
+
+console.log(showDateTime()); //01/19/2023 17:28
 ```
 1. Declare a function name _swapValues_. This function swaps value of x to y.
 
