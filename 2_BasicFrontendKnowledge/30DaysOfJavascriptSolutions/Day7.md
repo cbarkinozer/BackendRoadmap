@@ -244,24 +244,42 @@ swapValues(3,4); //4,3
     ```
 
 ```js
+const reverseArray = arr => {
+  const newArr = [];
+  for (let i=arr.length-1;i>=0;i--) {
+    newArr.push(arr[i]);
+  }
+  return newArr;
+}
+
+console.log(reverseArray([1, 2, 3, 4, 5]));
+//[5, 4, 3, 2, 1]
+console.log(reverseArray(['A', 'B', 'C']));
+//['C', 'B', 'A']
 ```
 1. Declare a function name _capitalizeArray_. It takes array as a parameter and it returns the - capitalizedarray.
 ```js
+//easy passed
 ```
 1. Declare a function name _addItem_. It takes an item parameter and it returns an array after adding the item
 ```js
+//easy passed
 ```
 1. Declare a function name _removeItem_. It takes an index parameter and it returns an array after removing an item
 ```js
+//easy passed
 ```
 1. Declare a function name _sumOfNumbers_. It takes a number parameter and it adds all the numbers in that range.
 ```js
+//easy passed
 ```
 1. Declare a function name _sumOfOdds_. It takes a number parameter and it adds all the odd numbers in that - range.
 ```js
+//easy passed
 ```
 1. Declare a function name _sumOfEven_. It takes a number parameter and it adds all the even numbers in that - range.
 ```js
+//easy passed
 ```
 1. Declare a function name evensAndOdds . It takes a positive integer as parameter and it counts number of evens and odds in the number.
 
@@ -272,6 +290,7 @@ swapValues(3,4); //4,3
     ```
 
 ```js
+//easy passed
 ```
 1. Write a function which takes any number of arguments and return the sum of the arguments
 
@@ -281,12 +300,15 @@ swapValues(3,4); //4,3
     ```
 
 ```js
+//easy passed
 ```
 1. Writ a function which generates a _randomUserIp_.
 ```js
+//easy passed
 ```
 1. Write a function which generates a _randomMacAddress_
 ```js
+//easy passed
 ```
 1. Declare a function name _randomHexaNumberGenerator_. When this function is called it generates a random hexadecimal number. The function return the hexadecimal number.
 
@@ -296,6 +318,7 @@ swapValues(3,4); //4,3
     ```
 
 ```js
+//easy passed
 ```
 1. Declare a function name _userIdGenerator_. When this function is called it generates seven character id. The function return the id.
 
@@ -304,6 +327,7 @@ swapValues(3,4); //4,3
     41XTDbE
     ```
 ```js
+//TODO
 ```
 
 ### Exercises: Level 3
