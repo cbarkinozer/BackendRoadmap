@@ -327,7 +327,17 @@ console.log(reverseArray(['A', 'B', 'C']));
     41XTDbE
     ```
 ```js
-//TODO
+function userIdGenerator(length){
+    let id= '';
+    let characters= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        id += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return id;
+}
+
+console.log(userIdGenerator(7));//7GSFlHb
 ```
 
 ### Exercises: Level 3
