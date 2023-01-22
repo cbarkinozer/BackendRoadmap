@@ -361,6 +361,37 @@ console.log(userIdGenerator(7));//7GSFlHb
     '
     ```
 ```js
+function userIdGeneratedByUser(){
+    
+    let characterCount = prompt("Please enter your character count:");
+    let idCount = prompt("Please enter id count:");
+    
+    let idArray = [idCount];
+    
+    let id= '';
+    let characters= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    
+    for(let i=0;i<idCount;i++){
+        
+        for ( let i = 0; i < characterCount; i++ ) {
+            id += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        
+        idArray.push(id);
+        id="";
+    }
+    
+    
+    
+    return idArray.slice(1);
+}
+
+console.log(userIdGeneratedByUser());
+/*
+    Please enter your character count:7
+    Please enter id count:3
+    [ 'Hv2Vxk2', 'RLs1BBl', '6frsxTQ' ]
+*/
 ```
 1. Write a function name _rgbColorGenerator_ and it generates rgb colors.
 
@@ -369,18 +400,23 @@ console.log(userIdGenerator(7));//7GSFlHb
     rgb(125,244,255)
     ```
 ```js
+//pass
 ```
 1. Write a function **_arrayOfHexaColors_** which return any number of hexadecimal colors in an array.
 ```js
+//pass
 ```
 1. Write a function **_arrayOfRgbColors_** which return any number of RGB colors in an array.
 ```js
+//pass
 ```
 1. Write a function **_convertHexaToRgb_** which converts hexa color to rgb and it returns an rgb color.
 ```js
+//pass
 ```
 1. Write a function **_convertRgbToHexa_** which converts rgb to hexa color and it returns an hexa color.
 ```js
+//pass
 ```
 1. Write a function **_generateColors_** which can generate any number of hexa or rgb colors.
 
@@ -391,9 +427,36 @@ console.log(userIdGenerator(7));//7GSFlHb
     console.log(generateColors('rgb', 1)) // 'rgb(33,79, 176)'
     ```
 ```js
+//pass
 ```
 1. Call your function _shuffleArray_, it takes an array as a parameter and it returns a shuffled array
 ```js
+function shuffleArray(arr){
+    let temp = undefined;
+    
+    for(let i=0;i<arr.length;i++){
+        
+        let headOrTails = Math.floor(Math.random()*2);
+        
+        if(headOrTails === 0){
+            let temp = arr.splice(i,1);
+            arr.unshift(temp[0]);
+        }
+        
+    }   
+    return arr;
+}
+
+let arr =[1,2,3,4,5]
+console.log(shuffleArray(arr));
+/*
+4 different run outputs:
+    [ 3, 2, 1, 4, 5 ]
+    [ 4, 1, 2, 3, 5 ]
+    [ 4, 3, 2, 1, 5 ]
+    [ 5, 3, 1, 2, 4 ]
+    [ 1, 2, 3, 4, 5 ]
+*/
 ```
 1. Call your function _factorial_, it takes a whole number as a parameter and it return a factorial of the number
 ```js
