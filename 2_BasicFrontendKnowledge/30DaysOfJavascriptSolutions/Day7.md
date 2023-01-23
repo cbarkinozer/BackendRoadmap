@@ -463,6 +463,17 @@ console.log(shuffleArray(arr));
 ```
 1. Call your function _isEmpty_, it takes a parameter and it checks if it is empty or not
 ```js
+function isEmpty(arr){
+    if(arr != null && arr != undefined && arr.length==0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+let arr = [];
+console.log(isEmpty(arr));
+
 ```
 1. Call your function _sum_, it takes any number of arguments and it returns the sum.
 ```js
