@@ -59,13 +59,7 @@ const dog ={
 
 ### Exercises: Level 2
 
-1. Find the person who has more skills in the users object.
-```js
-
-```
-1. Count logged in users, count users having greater than equal to 50 points from the following object.
-
-   ````js
+````js
    const users = {
      Alex: {
        email: 'alex@alex.com',
@@ -118,8 +112,39 @@ const dog ={
      }
    }```
 
+1. Find the person who has more skills in the users object.
+```js
+let max = 0;
+let userWithMaxSkill;
+for (const user in users) {
+  if (users.hasOwnProperty(user)) {
+      if(users[user].skills.length>max){
+          max = users[user].skills.length;
+          userWithMaxSkill = user;
+      }
+  }
+}
+console.log(`${userWithMaxSkill}: ${max}`);
+```
+1. Count logged in users, count users having greater than equal to 50 points from the following object.
+
+   ```js
+   ```
+
 1. Find people who are MERN stack developer from the users object
 ```js
+let usersThatUseMernStack =[];
+for (const user in users) {
+  if (users.hasOwnProperty(user)) {
+      if(Object.values(users[user].skills).includes("MongoDB")&&
+      Object.values(users[user].skills).includes("Express")&&
+      Object.values(users[user].skills).includes("React")&&
+      Object.values(users[user].skills).includes("Node")){
+          usersThatUseMernStack.push(user);
+      }
+  }
+}
+console.log(` Users that use the MERN stack:  ${usersThatUseMernStack}`);
 ```
 1. Set your name in the users object without modifying the original users object
 ```js
