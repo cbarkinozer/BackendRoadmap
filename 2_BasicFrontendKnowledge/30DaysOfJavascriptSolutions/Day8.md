@@ -59,7 +59,7 @@ const dog ={
 
 ### Exercises: Level 2
 
-````js
+```js
    const users = {
      Alex: {
        email: 'alex@alex.com',
@@ -110,7 +110,8 @@ const dog ={
        isLoggedIn: false,
        points: 40
      }
-   }```
+   }
+```
 
 1. Find the person who has more skills in the users object.
 ```js
