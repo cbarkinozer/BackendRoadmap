@@ -127,12 +127,28 @@ for (const user in users) {
 }
 console.log(`${userWithMaxSkill}: ${max}`);
 ```
-1. Count logged in users, count users having greater than equal to 50 points from the following object.
+2. Count logged in users, count users having greater than equal to 50 points from the following object.
 
    ```js
+    
+let loggedUsers =[];
+let usersWithMoreThan50Points = [];
+for (const user in users) {
+  if (users.hasOwnProperty(user)) {
+      if(users[user].isLoggedIn == true){
+          loggedUsers.push(user);
+      }
+      if(users[user].points >= 50){
+         usersWithMoreThan50Points.push(user); 
+      }
+      
+  }
+}
+console.log(` Users that are logged in:  ${loggedUsers}`);
+console.log(` Users with more than 50 points:  ${usersWithMoreThan50Points}`);
    ```
 
-1. Find people who are MERN stack developer from the users object
+3. Find people who are MERN stack developer from the users object
 ```js
 let usersThatUseMernStack =[];
 for (const user in users) {
@@ -147,20 +163,50 @@ for (const user in users) {
 }
 console.log(` Users that use the MERN stack:  ${usersThatUseMernStack}`);
 ```
-1. Set your name in the users object without modifying the original users object
+4. Set your name in the users object without modifying the original users object
 ```js
+const barkin = new Object();
+barkin.Barkin = {
+    email: '',
+    skills: ['Java','Spring','JavaScript'],
+    age: 23,
+    isLoggedIn: false,
+    points: 60
+};
+Object.assign(users,barkin);
+for (const user in users) {
+  if (users.hasOwnProperty(user)) {
+      console.log(user);
+  }
+}
 ```
-1. Get all keys or properties of users object
+5. Get all keys or properties of users object
 ```js
+const entries = Object.entries(users)
+console.log(entries)
 ```
-1. Get all the values of users object
+6. Get all the values of users object
 ```js
+let values = Object.values(users);
+console.log(values);
 ```
-1. Use the countries object to print a country name, capital, populations and languages.
+7. Use a countries object to print a country name, capital, populations and languages.
+```js
+   const countries = {
+     Turkey: {
+       capital: 'Ankara',
+       languages: ['Turkish'],
+       population: 84000000,
+     }
+   }
+console.log(countries);
+```
 
 ### Exercises: Level 3
 
 1. Create an object literal called _personAccount_. It has _firstName, lastName, incomes, expenses_ properties and it has _totalIncome, totalExpense, accountInfo,addIncome, addExpense_ and _accountBalance_ methods. Incomes is a set of incomes and its description and expenses is a set of incomes and its description.
+```js
+```
 2. **** Questions:2, 3 and 4 are based on the following two arrays:users and products ()
 
   ```js
@@ -238,12 +284,21 @@ console.log(` Users that use the MERN stack:  ${usersThatUseMernStack}`);
   ]
   ```
 
-  Imagine you are getting the above users collection from a MongoDB database.
+2. Imagine you are getting the above users collection from a MongoDB database.
     a. Create a function called signUp which allows user to add to the collection. If user exists, inform the user that he has already an account.  
+    ```js
+    ```
     b. Create a function called signIn which allows user to sign in to the application  
-
+    ```js
+    ```
 3. The products array has three elements and each of them has six properties.
     a. Create a function called rateProduct which rates the product
+    ```js
+    ```
     b. Create a function called averageRating which calculate the average rating of a product  
-
+    ```js
+    ```
 4. Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
+```js
+```
+
