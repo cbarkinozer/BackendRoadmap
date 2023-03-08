@@ -129,7 +129,7 @@ console.log(`${userWithMaxSkill}: ${max}`);
 ```
 2. Count logged in users, count users having greater than equal to 50 points from the following object.
 
-   ```js
+```js
     
 let loggedUsers =[];
 let usersWithMoreThan50Points = [];
@@ -146,7 +146,7 @@ for (const user in users) {
 }
 console.log(` Users that are logged in:  ${loggedUsers}`);
 console.log(` Users with more than 50 points:  ${usersWithMoreThan50Points}`);
-   ```
+```
 
 3. Find people who are MERN stack developer from the users object
 ```js
