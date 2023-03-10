@@ -285,12 +285,64 @@ console.log(countries);
   ```
 
 2. Imagine you are getting the above users collection from a MongoDB database.
-    a. Create a function called signUp which allows user to add to the collection. If user exists, inform the user that he has already an account.  
-    ```js
-    ```
+    a. Create a function called signUp which allows user to sign up in the users collection. If user exists, inform the user that he has already an account.  
+```js
+    function signUp(user){
+    
+    for (const u in users) {
+  if (users.hasOwnProperty(u)) {
+      if(users[u]._id ===user._id){
+          return "You already have an account.";
+      }
+  }
+}
+    users.push(user);
+    return user;
+    
+}
+
+const user = {
+          _id: 'zy9q7X',
+          username: 'seneca',
+          email: 'seneca@romanempire.com',
+          password: '123123',
+          createdAt:'08/01/49 9:00 AM',
+          isLoggedIn: false
+}
+
+console.log(signUp(user));
+console.log(signUp(user));
+```
+
     b. Create a function called signIn which allows user to sign in to the application  
-    ```js
-    ```
+```js
+    function signUp(user){
+    
+    for (const u in users) {
+  if (users.hasOwnProperty(u)) {
+      if(users[u].email ==user.email &&
+         users[u].password == user.password){
+          return "Welcome " + users[u].username;
+      }else{
+          return "User does not exist or wrong credentials.";
+      }
+  }
+}
+}
+
+const user1 = {
+          email: 'alex@alex.com',
+          password: '123123',
+}
+const user2 = {
+          email: 'seneca@romanempire.com',
+          password: '123123',
+}
+
+console.log(signUp(user2));//User does not exist or wrong credentials.
+console.log(signUp(user1));//Welcome Alex
+    
+```
 3. The products array has three elements and each of them has six properties.
     a. Create a function called rateProduct which rates the product
     ```js
@@ -299,6 +351,6 @@ console.log(countries);
     ```js
     ```
 4. Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
-```js
-```
+    ```js
+    ```
 
