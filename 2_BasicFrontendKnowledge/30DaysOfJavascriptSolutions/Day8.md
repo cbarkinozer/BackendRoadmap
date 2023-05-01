@@ -345,12 +345,160 @@ console.log(signUp(user1));//Welcome Alex
 ```
 3. The products array has three elements and each of them has six properties.
     a. Create a function called rateProduct which rates the product
-    ```js
-    ```
-    b. Create a function called averageRating which calculate the average rating of a product  
-    ```js
-    ```
-4. Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
-    ```js
-    ```
+```js
+      const products = [
+  {
+    id: 1,
+    name: 'Product A',
+    description: 'This is product A',
+    price: 10.99,
+    rating:0,
+    likes: []
+  },
+  {
+    id: 2,
+    name: 'Product B',
+    description: 'This is product B',
+    price: 19.99,
+    rating:0,
+    likes: []
+  },
+  {
+    id: 3,
+    name: 'Product C',
+    description: 'This is product C',
+    price: 5.99,
+    rating: 0,
+    likes: []
+  }
+];
 
+function rateProduct(products, productIndex, ratingValue) {
+  // Get the specified product from the products array
+  const product = products[productIndex];
+  
+  // Add a new rating object to the ratings array
+  product.rating = ratingValue;
+  
+  return product;
+}
+
+console.log(rateProduct(products, 0, 4));
+/*
+    {
+  id: 1,
+  name: 'Product A',
+  description: 'This is product A',
+  price: 10.99,
+  rating: 4,
+  likes: []
+}
+*/
+```
+b. Create a function called averageRating which calculate the average rating of a product  
+```js
+    const products = [
+  {
+    id: 1,
+    name: 'Product A',
+    description: 'This is product A',
+    price: 10.99,
+    rating:1,
+    likes: []
+  },
+  {
+    id: 2,
+    name: 'Product B',
+    description: 'This is product B',
+    price: 19.99,
+    rating:2,
+    likes: []
+  },
+  {
+    id: 3,
+    name: 'Product C',
+    description: 'This is product C',
+    price: 5.99,
+    rating: 3,
+    likes: []
+  }
+];
+
+function averageRating(products, productIndex) {
+  // Get the specified product from the products array
+  const product = products[productIndex];
+  
+  // Get the ratings array of the product
+  const ratings = []
+  for (p of products) {
+      ratings.push(p.rating);
+  }
+  
+  // Calculate the average rating value
+  if (ratings.length === 0) {
+    return 0;
+  } else {
+    const sum = ratings.reduce((a, b) => a + b, 0);
+    return sum / ratings.length;
+  }
+}
+
+const productIndex = 0; // the index of the product you want to calculate the average rating for
+const avgRating = averageRating(products, productIndex);
+console.log(avgRating); // outputs the average rating value for the specified product
+/*
+2
+*/
+```
+
+
+4. Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
+```js
+const products = [
+  {
+    id: 1,
+    name: 'Product A',
+    description: 'This is product A',
+    price: 10.99,
+    rating:1,
+    likes: false
+  },
+  {
+    id: 2,
+    name: 'Product B',
+    description: 'This is product B',
+    price: 19.99,
+    rating:2,
+    likes: false
+  },
+  {
+    id: 3,
+    name: 'Product C',
+    description: 'This is product C',
+    price: 5.99,
+    rating: 3,
+    likes: false
+  }
+];
+
+function likeProduct(products, productIndex) {
+  const product = products[productIndex];
+  if (product.isLiked) {
+    // If the product is already liked, set isLiked to false to remove the like
+    product.isLiked = false;
+    console.log(`${product.name} is unliked.`);
+  } else {
+    // If the product is not liked, set isLiked to true to add the like
+    product.isLiked = true;
+    console.log(`${product.name} is liked.`);
+  }
+}
+
+const productIndex = 0; // the index of the product to like or unlike
+likeProduct(products, productIndex); // like or unlike the specified product
+likeProduct(products, productIndex); // like or unlike the specified product
+/*
+Product A is liked.
+Product A is unliked.
+*/
+```
