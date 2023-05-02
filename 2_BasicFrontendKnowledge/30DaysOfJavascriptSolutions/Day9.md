@@ -159,12 +159,81 @@ const russiaIndex = countries.findIndex(country => country === "Russia");
 ### Exercises: Level 2
 
 1. Find the total price of products by chaining two or more array iterators(eg. arr.map(callback).filter(callback).reduce(callback))
-1. Find the sum of price of products using only reduce reduce(callback))
-1. Declare a function called **_categorizeCountries_** which returns an array of countries which have some common pattern(you find the countries array in this repository as countries.js(eg 'land', 'ia', 'island','stan')).
-1. Create a function which return an array of objects, which is the letter and the number of times the letter use to start with a name of a country.
-1. Declare a **_getFirstTenCountries_** function and return an array of ten countries. Use different functional programming to work on the countries.js array
-1. Declare a **_getLastTenCountries_** function which which returns the last ten countries in the countries array.
-1. Find out which _letter_ is used many _times_ as initial for a country name from the countries array (eg. Finland, Fiji, France etc)
+```js
+const total = products
+  .filter(product => product.price > 0)
+  .map(product => product.price)
+  .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+```
+2. Find the sum of price of products using only reduce reduce(callback))
+```js
+const total = products.reduce((accumulator, currentValue) => {
+  if (currentValue.price > 0) {
+    return accumulator + currentValue.price;
+  }
+  return accumulator;
+}, 0);
+```
+3. Declare a function called **_categorizeCountries_** which returns an array of countries which have some common pattern(you find the countries array in this repository as countries.js(eg 'land', 'ia', 'island','stan')).
+```js
+const categorizeCountries = pattern => {
+  const regex = new RegExp(pattern, 'i');
+  return countries.filter(country => regex.test(country));
+};
+
+console.log(categorizeCountries('land'));
+// Output: ["Finland", "Iceland", "Switzerland", "Poland", "Greenland", "Scotland", "England", "Northern Ireland"]
+console.log(categorizeCountries('ia'));
+// Output: ["Nigeria", "Albania", "Tanzania", "Croatia", "Russia", "Slovakia", "Slovenia", "Mauritania", "Liberia", "Namibia", "Zambia", "Cambodia", "Macedonia", "Bosnia and Herzegovina", "Colombia", "Czech Republic", "Mongolia", "Serbia and Kosovo"]
+console.log(categorizeCountries('stan'));
+// Output: ["Pakistan", "Kazakhstan", "Afghanistan", "Tajikistan", "Kyrgyzstan", "Turkmenistan", "Uzbekistan"]
+console.log(categorizeCountries('island'));
+// Output: ["Iceland"]
+```
+4. Create a function which return an array of objects, which is the letter and the number of times the letter use to start with a name of a country.
+```js
+const getInitialsCount = () => {
+  const initialsCount = {};
+  countries.forEach(country => {
+    const initial = country[0].toUpperCase();
+    if (initialsCount[initial]) {
+      initialsCount[initial] += 1;
+    } else {
+      initialsCount[initial] = 1;
+    }
+  });
+  return Object.entries(initialsCount).map(entry => ({ letter: entry[0], count: entry[1] }));
+};
+
+console.log(getInitialsCount());
+```
+5. Declare a **_getFirstTenCountries_** function and return an array of ten countries. Use different functional programming to work on the countries.js array
+```js
+function getFirstTenCountries() {
+  return countries.slice(0, 10)
+}
+```
+6. Declare a **_getLastTenCountries_** function which which returns the last ten countries in the countries array.
+```js
+function getLastTenCountries() {
+  return countries.slice(-10)
+}
+```
+7. Find out which _letter_ is used many _times_ as initial for a country name from the countries array (eg. Finland, Fiji, France etc)
+```js
+const letterCounts = {};
+
+countries.forEach(country => {
+  const firstLetter = country[0].toUpperCase();
+  if (letterCounts[firstLetter]) {
+    letterCounts[firstLetter] += 1;
+  } else {
+    letterCounts[firstLetter] = 1;
+  }
+});
+
+const mostFrequentLetter = Object.keys(letterCounts).reduce((a, b) => letterCounts[a] > letterCounts[b] ? a : b);
+```
 
 ### Exercises: Level 3
 
@@ -196,6 +265,9 @@ const russiaIndex = countries.findIndex(country => country === "Russia");
    ]```
 
    ````
+   
+   ```js
+   ```
 
 2. \*\*\* Use countries_data.js file create a function which create the ten most populated countries
 
@@ -224,6 +296,9 @@ const russiaIndex = countries.findIndex(country => country === "Russia");
    ```
 
    ````
+   
+   ```js
+   ```
 
 3. \*\*\* Try to develop a program which calculate measure of central tendency of a sample(mean, median, mode) and measure of variability(range, variance, standard deviation). In addition to those measures find the min, max, count, percentile, and frequency distribution of the sample. You can create an object called statistics and create all the functions which do statistical calculations as method for the statistics object. Check the output below.
 
@@ -257,4 +332,6 @@ const russiaIndex = countries.findIndex(country => country === "Russia");
    Variance:  17.5
    Standard Deviation:  4.2
    Frequency Distribution: [(20.0, 26), (16.0, 27), (12.0, 32), (8.0, 37), (8.0, 34), (8.0, 33), (8.0, 31), (8.0, 24), (4.0, 38), (4.0, 29), (4.0, 25)]
+   ```
+   ```js
    ```
