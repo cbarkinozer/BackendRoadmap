@@ -267,6 +267,17 @@ const mostFrequentLetter = Object.keys(letterCounts).reduce((a, b) => letterCoun
    ````
    
    ```js
+   // Sort by name
+countries.sort((a, b) => a.name.localeCompare(b.name));
+console.log(countries.map(c => c.name)); // array of country names sorted by name
+
+// Sort by capital
+countries.sort((a, b) => a.capital.localeCompare(b.capital));
+console.log(countries.map(c => c.capital)); // array of capital names sorted by name
+
+// Sort by population
+countries.sort((a, b) => b.population - a.population);
+console.log(countries.map(c => c.name + ": " + c.population)); // array of country names and their population sorted by population
    ```
 
 2. \*\*\* Use countries_data.js file create a function which create the ten most populated countries
@@ -298,6 +309,23 @@ const mostFrequentLetter = Object.keys(letterCounts).reduce((a, b) => letterCoun
    ````
    
    ```js
+   function mostSpokenLanguages(countries, n) {
+  const languages = countries.flatMap(c => c.languages);
+  const count = {};
+  for (const language of languages) {
+    if (count[language]) {
+      count[language]++;
+    } else {
+      count[language] = 1;
+    }
+  }
+  const languageList = Object.entries(count).map(([language, count]) => ({country: language, count}));
+  languageList.sort((a, b) => b.count - a.count);
+  return languageList.slice(0, n);
+}
+
+console.log(mostSpokenLanguages(countries, 10)); // array of 10 most spoken languages with their count
+console.log(mostSpokenLanguages(countries, 3)); // array of 3 most spoken languages with their count
    ```
 
 3. \*\*\* Try to develop a program which calculate measure of central tendency of a sample(mean, median, mode) and measure of variability(range, variance, standard deviation). In addition to those measures find the min, max, count, percentile, and frequency distribution of the sample. You can create an object called statistics and create all the functions which do statistical calculations as method for the statistics object. Check the output below.
@@ -333,5 +361,66 @@ const mostFrequentLetter = Object.keys(letterCounts).reduce((a, b) => letterCoun
    Standard Deviation:  4.2
    Frequency Distribution: [(20.0, 26), (16.0, 27), (12.0, 32), (8.0, 37), (8.0, 34), (8.0, 33), (8.0, 31), (8.0, 24), (4.0, 38), (4.0, 29), (4.0, 25)]
    ```
+   
    ```js
+   const statistics = {
+  count: () => ages.length,
+  sum: () => ages.reduce((acc, val) => acc + val),
+  min: () => Math.min(...ages),
+  max: () => Math.max(...ages),
+  range: () => statistics.max() - statistics.min(),
+  mean: () => statistics.sum() / statistics.count(),
+  median: () => {
+    const sortedAges = ages.sort((a, b) => a - b);
+    const middle = Math.floor(sortedAges.length / 2);
+    if (sortedAges.length % 2 === 0) {
+      return (sortedAges[middle - 1] + sortedAges[middle]) / 2;
+    }
+    return sortedAges[middle];
+  },
+  mode: () => {
+    const counts = {};
+    ages.forEach(age => counts[age] = (counts[age] || 0) + 1);
+    const modes = [];
+    let maxCount = 0;
+    for (const age in counts) {
+      if (counts[age] > maxCount) {
+        modes.splice(0, modes.length, age);
+        maxCount = counts[age];
+      } else if (counts[age] === maxCount) {
+        modes.push(age);
+      }
+    }
+    return { mode: modes.join(', '), count: maxCount };
+  },
+  var: () => {
+    const mean = statistics.mean();
+    const squaredDifferences = ages.map(age => (age - mean) ** 2);
+    return statistics.mean(squaredDifferences);
+  },
+  std: () => Math.sqrt(statistics.var()),
+  freqDist: () => {
+    const counts = {};
+    ages.forEach(age => counts[age] = (counts[age] || 0) + 1);
+    const items = Object.keys(counts).map(key => [counts[key] / ages.length * 100, parseInt(key)]);
+    return items.sort((a, b) => b[0] - a[0]);
+  },
+  describe: () => {
+    return `Count: ${statistics.count()}
+Sum: ${statistics.sum()}
+Min: ${statistics.min()}
+Max: ${statistics.max()}
+Range: ${statistics.range()}
+Mean: ${statistics.mean()}
+Median: ${statistics.median()}
+Mode: ${statistics.mode().mode} (count: ${statistics.mode().count})
+Variance: ${statistics.var()}
+Standard Deviation: ${statistics.std()}
+Frequency Distribution: ${statistics.freqDist().map(([freq, val]) => `(${freq}, ${val})`).join(', ')}
+`;
+  },
+};
+
+console.log(statistics.describe());
+
    ```
